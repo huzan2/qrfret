@@ -1,8 +1,8 @@
 import { initializeApp } from "firebase/app";
-import { getDatabase } from "firebase/database";
+import { getDatabase, ref } from "firebase/database";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCu3R_S-BqFRKTkZ1M3Z3EW1BNQBMPp9L4",
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: "qrfret.firebaseapp.com",
   databaseURL:
     "https://qrfret-default-rtdb.asia-southeast1.firebasedatabase.app",
@@ -14,3 +14,4 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 export const db = getDatabase(app);
+export const dbref = ref(db);
