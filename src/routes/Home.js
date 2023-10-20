@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import CustomButton from "../Components/CustomButton";
 import PageTitle from "../Components/PageTitle";
+import { cookieNames, getCookie } from "../util/cookieUtil";
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true)
@@ -14,9 +15,9 @@ export default function Home() {
 
   useEffect(() => {
     if (isLoading) {
-      console.log("LOADING...")
+      console.log("[Home Papge] LOADING...")
     } else {
-      console.log("LOADING COMPLETE!")
+      console.log("[Home Papge] LOADING COMPLETE!")
     }
   }, [isLoading])
   //<<<<<<<<<<<<<<<<<<<<<<<<<<<<FOR DEBUG<<<<<<<<<<<<<<<
@@ -37,7 +38,11 @@ export default function Home() {
   }
 
   const onClickRaffleButton = () => {
-    navigate("/raffle")
+    if(getCookie(cookieNames.phoneNumber) === undefined){
+      navigate("/raffle")
+    }else{
+      navigate("/raffleticket")
+    }
   }
 
   return (

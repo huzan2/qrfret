@@ -1,7 +1,12 @@
 import React from "react";
+import { CookiesProvider } from "react-cookie";
 import ReactDOM from "react-dom/client";
-import "./main.css";
 import App from "./App";
+import "./main.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<App />);
+root.render(
+  <CookiesProvider>
+    <App />
+  </CookiesProvider>
+);

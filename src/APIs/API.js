@@ -18,7 +18,7 @@ number
     ㄴ uuid: "01012341234"
 */
 
-export const DEV_initDB = async() => {
+export const DEV_ResetRaffle = async() => {
   await set(ref(db, 'count'), {
     num: 0
   })
@@ -42,10 +42,28 @@ export const setCount = async (value) => {
   })
 }
 
-export const postPhoneNumber = async () => {
-
+export const postPhoneNumber = async (phoneNumber, count) => {
+  if(phoneNumber === undefined) return
+  console.log("POSTPHONENUMBER", phoneNumber, count)
+  const uuid = phoneNumber;
+  const num = count;
+  set(ref(db, "/number/" + uuid),{
+    phoneNumber,
+    num,
+    uuid,
+  });
 }
 
-export const getIsExistPhoneNumber = async () => {
-  return false
+export const getIsExistPhoneNumber = async (phoneNumber) => {
+  if(phoneNumber === undefined) return 0
+  const res = await get(child(dbref, "/number"))
+  if(
+    res
+  &&res.val() !== null
+  &&res.val()[phoneNumber]
+  &&res.val()[phoneNumber] !== undefined
+  ){
+    return res.val()[phoneNumber]
+  }
+  return 0
 }
