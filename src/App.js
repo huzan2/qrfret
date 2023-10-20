@@ -1,16 +1,14 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "./routes/Home";
-import Detail from "./routes/Detail";
-import Manage from "./routes/Manage";
+import { BrowserRouter } from "react-router-dom";
+import Logo from "./Components/Logo";
+import Router from "./Router";
 
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/Detail" element={<Detail />} />
-        <Route path="/Manage" element={<Manage />} />
-      </Routes>
+      <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+        <Logo />
+        <Router />
+      </div>
     </BrowserRouter>
   );
 }
