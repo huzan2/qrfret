@@ -1,13 +1,77 @@
 import logofret from "../logofret.jpeg";
 import { useState } from "react";
-import { ref, set } from "firebase/database";
+import { ref, set, get, child, update } from "firebase/database";
 import { db } from "../firebase";
+import { uid } from "uid";
 
 export default function Home() {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [submited, setSubmited] = useState(false);
   const [validated, setValidated] = useState(false);
   const [eventNumber, setEventNumber] = useState(0);
+
+  /*
+  DB 구조
+  count
+    ㄴ last
+      ㄴ num: 2 << 마지막 번호 저장공간
+      ㄴ uuid: "last"
+  number
+    ㄴ 01012345678 << uid
+      ㄴ num: 1 << 추첨번호
+      ㄴ phoneNumber: "01012345678" << 전화번호
+      ㄴ uuid: "01012345678"
+    ㄴ 01012341234
+      ㄴ num: 2
+      ㄴ phoneNumber: "01012341234"
+      ㄴ uuid: "01012341234"
+  */
+
+  const testFunc = () => {
+    const dbref = ref(db);
+    get(child(dbref, "/number")).then((snapshot) => {
+      if (snapshot.exists()) {
+        const temp = snapshot.toJSON();
+        if (temp.hasOwnProperty(phoneNumber)) {
+          // 입력받은 번호가 이미 db에 존재하는 경우
+          // show own event number
+          console.log("number is already exist");
+        } else {
+          // 처음 들어온 전화번호인 경우
+          getLastNum(writeData);
+        }
+      }
+    });
+  };
+  const getLastNum = async (callback) => {
+    const dbref = ref(db);
+    await get(child(dbref, "/count")).then((snapshot) => {
+      if (snapshot.exists()) {
+        console.log("changing eventnum from " + eventNumber);
+        setEventNumber(snapshot.val().last.num + 1);
+        // db에 저장된 마지막 번호 + 1 해서 eventNum state에 저장
+        console.log("to " + eventNumber);
+      } else {
+        console.log("error getting lastnum");
+      }
+    });
+    callback(); // 콜백 -> 아래 writeData()로 넘어감
+  };
+  const writeData = () => {
+    const uuid = phoneNumber;
+    const num = eventNumber;
+    set(ref(db, "number/" + uuid), {
+      phoneNumber,
+      num,
+      uuid,
+    });
+    setValidated(false); // css 적용 관련
+    setSubmited(true); // css 적용 관련
+    update(ref(db, "/count/last"), {
+      num: eventNumber, // firebase db에 마지막 번호 업데이트
+    });
+  };
+
   return (
     <>
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -82,7 +146,7 @@ export default function Home() {
                     setValidated(true);
                     return;
                   }
-                  setSubmited(true);
+                  testFunc();
                 }}
                 className="flex w-full mt-5 justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
