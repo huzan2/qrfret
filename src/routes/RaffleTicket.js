@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import { getIsExistPhoneNumber } from "../APIs/API"
+import { getIsExistPhoneNumber } from "../APIs/APIRaffle"
 import CustomButton from "../Components/CustomButton"
 import PageTitle from "../Components/PageTitle"
 import { cookieNames, getCookie } from "../util/cookieUtil"

@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { DEV_ResetRaffle } from "../APIs/API";
+import { DEV_ResetRaffle } from "../APIs/APIRaffle";
 import CustomButton from "../Components/CustomButton";
 import PageTitle from "../Components/PageTitle";
 import { cookieNames, deleteCookie } from "../util/cookieUtil";

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getCount, getIsExistPhoneNumber, postPhoneNumber, setCount } from "../APIs/API";
+import { getCount, getIsExistPhoneNumber, postPhoneNumber, setCount } from "../APIs/APIRaffle";
 import CustomButton from "../Components/CustomButton";
 import PageTitle from "../Components/PageTitle";
 import { cookieNames, setCookie } from "../util/cookieUtil";

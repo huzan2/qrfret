@@ -4,7 +4,7 @@ import CustomButton from "../Components/CustomButton";
 import PageTitle from "../Components/PageTitle";
 import { cookieNames, getCookie } from "../util/cookieUtil";
 
-export default function Home() {
+const Home = () => {
   const [isLoading, setIsLoading] = useState(true)
   const navigate = useNavigate()
 
@@ -67,3 +67,5 @@ export default function Home() {
     </>
   );
 }
+
+export default Home;

@@ -4,12 +4,10 @@ import { db, dbref } from "../firebase";
 /*
 DB 구조
 count
-  ㄴ last
-    ㄴ num: 2 << 마지막 번호 저장공간
-    ㄴ uuid: "last"
+  ㄴ num: 2 << 마지막 번호 저장공간
 number
   ㄴ 01012345678 << uid
-    ㄴ num: 1 << 추첨번호
+    ㄴ num: 1 << 추첨번호, auto increment
     ㄴ phoneNumber: "01012345678" << 전화번호
     ㄴ uuid: "01012345678"
   ㄴ 01012341234
