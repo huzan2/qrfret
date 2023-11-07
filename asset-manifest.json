@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/qrfret/static/css/main.0fb1158f.css",
-    "main.js": "/qrfret/static/js/main.f1665d0a.js",
+    "main.css": "/qrfret/static/css/main.fd895181.css",
+    "main.js": "/qrfret/static/js/main.f7db94fd.js",
     "static/media/logofret.jpeg": "/qrfret/static/media/logofret.f9b7af7eb9aa8c2b98a1.jpeg",
     "index.html": "/qrfret/index.html",
-    "main.0fb1158f.css.map": "/qrfret/static/css/main.0fb1158f.css.map",
-    "main.f1665d0a.js.map": "/qrfret/static/js/main.f1665d0a.js.map"
+    "main.fd895181.css.map": "/qrfret/static/css/main.fd895181.css.map",
+    "main.f7db94fd.js.map": "/qrfret/static/js/main.f7db94fd.js.map"
   },
   "entrypoints": [
-    "static/css/main.0fb1158f.css",
-    "static/js/main.f1665d0a.js"
+    "static/css/main.fd895181.css",
+    "static/js/main.f7db94fd.js"
   ]
 }
