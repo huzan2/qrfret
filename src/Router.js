@@ -1,11 +1,12 @@
-import { Route, Routes } from "react-router-dom"
-import DEVPage from "./routes/DEV"
-import Detail from "./routes/Detail"
-import Home from "./routes/Home"
-import Manage from "./routes/Manage"
-import Raffle from "./routes/Raffle"
-import RaffleTicket from "./routes/RaffleTicket"
-import SetList from "./routes/SetList"
+import { Route, Routes } from "react-router-dom";
+import DEVPage from "./routes/DEV";
+import Detail from "./routes/Detail";
+import Home from "./routes/Home";
+import Manage from "./routes/Manage";
+import Raffle from "./routes/Raffle";
+import RaffleTicket from "./routes/RaffleTicket";
+import SetList from "./routes/SetList";
+import DB from "./routes/DB";
 
 const Router = () => {
   return (
@@ -17,8 +18,9 @@ const Router = () => {
       <Route path="/raffleticket" element={<RaffleTicket />} />
       <Route path="/setlist" element={<SetList />} />
       <Route path="/DEV" element={<DEVPage />} />
+      <Route path="/DB" element={<DB />} />
     </Routes>
-    )
-}
+  );
+};
 
-export default Router
+export default Router;

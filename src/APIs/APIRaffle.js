@@ -16,52 +16,59 @@ number
     ㄴ uuid: "01012341234"
 */
 
-export const DEV_ResetRaffle = async() => {
-  await set(ref(db, 'count'), {
-    num: 0
-  })
-  await set(ref(db, 'number'), {
-
-  })
-}
+export const DEV_ResetRaffle = async () => {
+  await set(ref(db, "count"), {
+    num: 0,
+  });
+  await set(ref(db, "number"), {});
+};
 
 export const getCount = async () => {
-  const res = await get(child(dbref, "count"))
+  const res = await get(child(dbref, "count"));
   try {
-    return res.val().num
+    return res.val().num;
   } catch (err) {
-    throw err
+    throw err;
   }
-}
+};
 
 export const setCount = async (value) => {
   const res = await update(ref(db, "count"), {
-    num: value
-  })
-}
+    num: value,
+  });
+};
 
 export const postPhoneNumber = async (phoneNumber, count) => {
-  if(phoneNumber === undefined) return
-  console.log("POSTPHONENUMBER", phoneNumber, count)
+  if (phoneNumber === undefined) return;
+  console.log("POSTPHONENUMBER", phoneNumber, count);
   const uuid = phoneNumber;
   const num = count;
-  set(ref(db, "/number/" + uuid),{
+  set(ref(db, "/number/" + uuid), {
     phoneNumber,
     num,
     uuid,
   });
-}
+};
 
 export const getIsExistPhoneNumber = async (phoneNumber) => {
-  if(phoneNumber === undefined) return 0
-  const res = await get(child(dbref, "/number"))
-  if(
-    res
-  &&res.val() !== null
-  &&res.val()[phoneNumber]
-  &&res.val()[phoneNumber] !== undefined
-  ){
-    return res.val()[phoneNumber]
+  if (phoneNumber === undefined) return 0;
+  const res = await get(child(dbref, "/number"));
+  if (
+    res &&
+    res.val() !== null &&
+    res.val()[phoneNumber] &&
+    res.val()[phoneNumber] !== undefined
+  ) {
+    return res.val()[phoneNumber];
   }
-  return 0
-}
+  return 0;
+};
+
+export const getNumberList = async () => {
+  const res = await get(child(dbref, "number"));
+  try {
+    return res.val();
+  } catch (err) {
+    throw err;
+  }
+};
