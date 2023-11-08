@@ -1,8 +1,8 @@
+import CustomButton from "Components/CustomButton";
+import PageTitle from "Components/PageTitle";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import CustomButton from "../Components/CustomButton";
-import PageTitle from "../Components/PageTitle";
-import { cookieNames, getCookie } from "../util/cookieUtil";
+import { cookieNames, getCookie } from "util/cookieUtil";
 
 const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -45,7 +45,7 @@ const Home = () => {
 
   return (
     <>
-      <div className="flex min-h-full flex-1 flex-col justify-center">
+      <div className="flex flex-col justify-center">
         {isLoading ? null : (
           <div>
             <PageTitle title={"2023 14fret 정기공연"} />

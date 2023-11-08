@@ -1,5 +1,5 @@
-import { ref, set, get, child, update } from "firebase/database";
-import { db } from "./firebase";
+import { db } from "firebase";
+import { child, get, ref, set, update } from "firebase/database";
 
 const ifExist = (number) => {
   return new Promise((resolve, reject) => {
@@ -40,4 +40,5 @@ const createData = (phoneNumber, num) => {
   });
 };
 
-export { ifExist, getLastNumber, createData };
+export { createData, getLastNumber, ifExist };
+

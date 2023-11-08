@@ -1,5 +1,5 @@
+import logofret from "images/image-logo.png";
 import { useNavigate } from "react-router-dom";
-import logofret from "../logofret.jpeg";
 
 const Logo = () => {
   const navigate = useNavigate()

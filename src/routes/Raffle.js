@@ -1,9 +1,9 @@
+import { getCount, getIsExistPhoneNumber, postPhoneNumber, setCount } from "APIs/APIRaffle";
+import CustomButton from "Components/CustomButton";
+import PageTitle from "Components/PageTitle";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getCount, getIsExistPhoneNumber, postPhoneNumber, setCount } from "../APIs/APIRaffle";
-import CustomButton from "../Components/CustomButton";
-import PageTitle from "../Components/PageTitle";
-import { cookieNames, setCookie } from "../util/cookieUtil";
+import { cookieNames, setCookie } from "util/cookieUtil";
 
 const Raffle = () => {
   const [phoneNumber, setPhoneNumber] = useState(undefined);
@@ -114,13 +114,13 @@ const Raffle = () => {
 
   return (
     <>
-      <div className="flex min-h-full flex-1 flex-col justify-center">
+      <div className="flex flex-col justify-center">
         <PageTitle title="추첨권 등록" />
         {
           isLoading ?
             null :
             <div>
-              <div className="mt-4 sm:mx-auto sm:w-full sm:max-w-sm">
+              <div className="mt-4">
                 <div>
                   <label className="block text-sm font-medium leading-6 text-gray-900">
                     전화번호를 입력하세요

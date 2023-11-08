@@ -1,8 +1,8 @@
+import { DEV_ResetRaffle } from "APIs/APIRaffle";
+import CustomButton from "Components/CustomButton";
+import PageTitle from "Components/PageTitle";
 import { useNavigate } from "react-router-dom";
-import { DEV_ResetRaffle } from "../APIs/APIRaffle";
-import CustomButton from "../Components/CustomButton";
-import PageTitle from "../Components/PageTitle";
-import { cookieNames, deleteCookie } from "../util/cookieUtil";
+import { cookieNames, deleteCookie } from "util/cookieUtil";
 
 const DEVPage = () => {
   const navigate = useNavigate();
@@ -34,7 +34,7 @@ const DEVPage = () => {
     <div>
       <PageTitle title={"관리 페이지"} />
       <div className="mt-5" />
-      <input
+      {/* <input
         onInput={inputHandler}
         onChange={onChangeInput}
         type="text"
@@ -45,7 +45,7 @@ const DEVPage = () => {
         title={"셋리스트 입력(for test)"}
         type="submit"
         onClick={onClickSetListSubmit}
-      />
+      /> */}
       <CustomButton title={"추첨권 초기화"} onClick={onClickResetRaffle} />
       <CustomButton
         title={"쿠키(추첨권 번호) 초기화"}
