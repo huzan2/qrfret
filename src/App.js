@@ -1,18 +1,18 @@
 import Footer from "Components/Footer";
-import Logo from "Components/Logo";
+import Header from "Components/Header";
 import Routers from "Routers";
 import { BrowserRouter } from "react-router-dom";
 
 function App() {
   return (
     <BrowserRouter basename="/qrfret">
-      <div className="flex justify-center align-center">
-        <div className="flex flex-1 flex-col max-w-lg justify-center w-96 px-6 pt-12 pb-6 lg:px-8">
-          <Logo />
+      <Header/>
+      <div className="flex justify-center align-center font-['NanumSquare']">
+        <div className="flex flex-1 flex-col max-w-lg justify-center w-96 lg:px-8">
           <Routers />
-          <Footer />
         </div>
       </div>
+      <Footer />
     </BrowserRouter>
   );
 }

@@ -1,12 +1,14 @@
 import CustomButton from "Components/CustomButton";
+import Logo from "Components/Logo";
 import PageTitle from "Components/PageTitle";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { cookieNames, getCookie } from "util/cookieUtil";
 
 const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   //>>>>>>>>>>>>>>>>>>>>>>>>>>>>FOR DEBUG>>>>>>>>>>>>>>>
   const TEST = async () => {};
@@ -43,11 +45,25 @@ const Home = () => {
     }
   };
 
+  useEffect(() => {
+    const type = searchParams.get('type');
+    if(type === 'setlist'){
+      navigate('/setlist')
+    }else if(type === 'raffle'){
+      if (getCookie(cookieNames.phoneNumber) === undefined) {
+        navigate("/raffle");
+      } else {
+        navigate("/raffleticket");
+      }
+    }
+  }, [searchParams])
+
   return (
     <>
       <div className="flex flex-col justify-center">
         {isLoading ? null : (
-          <div>
+          <div className="m-6">
+            <Logo/>
             <PageTitle title={"2023 14fret 정기공연"} />
             <PageTitle title={"Fly with 14FRET"} />
             <CustomButton

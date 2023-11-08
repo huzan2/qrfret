@@ -1,5 +1,5 @@
 import { getIsExistPhoneNumber } from "APIs/APIRaffle"
-import CustomButton from "Components/CustomButton"
+import Logo from "Components/Logo"
 import PageTitle from "Components/PageTitle"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
@@ -40,7 +40,8 @@ const RaffleTicket = () => {
   }, [])
 
   return (
-    <div className="flex flex-col justify-center">
+    <div className="flex flex-col justify-center m-6">
+      <Logo/>
       <PageTitle title={"추첨권 조회"} />
       {
         isLoading ?
@@ -51,10 +52,6 @@ const RaffleTicket = () => {
             <p className="text-8xl font-semibold">{ticketNumber}</p>
           </div>
       }
-      <CustomButton
-        title={"돌아가기"}
-        onClick={onClickBackToMain}
-      />
     </div>
   )
 }

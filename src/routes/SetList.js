@@ -1,6 +1,4 @@
 import { getSetList } from "APIs/APISetList";
-import CustomButton from "Components/CustomButton";
-import PageTitle from "Components/PageTitle";
 import SetListItem from "Components/SetListitem";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -27,7 +25,7 @@ const SetList = () => {
   useEffect(() => {
     setIsLoading(true);
     getSetList().then((res) => {
-      console.log(res)
+      console.log(res);
       if (res.setList)
         setSetList(res.setList.sort((a, b) => a.number - b.number));
     });
@@ -35,21 +33,23 @@ const SetList = () => {
   }, []);
   return (
     <div>
-      <PageTitle title={"셋리스트 조회"} />
       {isLoading ? null : (
         <div>
-          <ul className="divide-y divide-gray-100">
+          <ul className="divide-y divide-gray-600 px-6">
             {setList && setList.length > 0
               ? setList.map((item, index) => {
                   return (
-                    <SetListItem key={`item-${index}`} item={item} index={index} />
+                    <SetListItem
+                      key={`item-${index}`}
+                      item={item}
+                      index={index}
+                    />
                   );
                 })
               : null}
           </ul>
         </div>
       )}
-      <CustomButton title={"뒤로가기"} onClick={onClickBackButton} />
     </div>
   );
 };

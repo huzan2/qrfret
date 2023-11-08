@@ -1,4 +1,4 @@
-import logofret from "images/image-logo.png";
+import logofret from "images/image-logo-removebg.png";
 import { useNavigate } from "react-router-dom";
 
 const Logo = () => {
@@ -16,7 +16,7 @@ const Logo = () => {
   return (
     <div>
       <img
-        className="mx-auto h-20 w-auto"
+        className="mx-auto h-28 w-auto"
         src={logofret}
         alt="Your Company"
         onClick={onClickLogo}

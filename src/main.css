@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'NanumSquare';
+  src: url('/src/fonts/NanumSquareR.ttf');
+}
+
+@font-face {
+  font-family: 'NanumSquareEB';
+  src: url('/src/fonts/Tenada.ttf');
+}
+
 @layer base {
   input[type="number"]::-webkit-inner-spin-button,
   input[type="number"]::-webkit-outer-spin-button {

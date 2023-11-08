@@ -84,44 +84,45 @@
     },
     {
       "bass": [
-        "한지우"
+        "이승하"
       ],
       "drum": [
-        "안승환"
+        "이유진"
       ],
       "guitar": [
-        "강재호"
+        "조현호",
+        "이주원"
       ],
       "keyboard": [
+        "장우종",
         "황정빈"
       ],
       "number": "5",
-      "songArtist": "Jorja Smith",
-      "songName": "Teenage Fantasy",
+      "songArtist": "자우림",
+      "songName": "스물 다섯, 스물 하나",
       "vocal": [
-        "이시연"
+        "김민지"
       ]
     },
     {
       "bass": [
-        "이서영"
+        "홍윤표"
       ],
       "drum": [
-        "김영균"
+        "김석진"
       ],
       "guitar": [
-        "김원후",
+        "강재호",
         "이지호"
       ],
       "keyboard": [
-        "이서은",
-        "박민석"
+        "김민정"
       ],
       "number": "6",
-      "songArtist": "백예린",
-      "songName": "la la la lovesong",
+      "songArtist": "유다빈밴드",
+      "songName": "안중",
       "vocal": [
-        "김다솔"
+        "김준서"
       ]
     },
     {
@@ -151,27 +152,6 @@
         "홍윤표"
       ],
       "drum": [
-        "김석진"
-      ],
-      "guitar": [
-        "강재호",
-        "이지호"
-      ],
-      "keyboard": [
-        "김민정"
-      ],
-      "number": "8",
-      "songArtist": "유다빈밴드",
-      "songName": "안중",
-      "vocal": [
-        "김준서"
-      ]
-    },
-    {
-      "bass": [
-        "홍윤표"
-      ],
-      "drum": [
         "김영균"
       ],
       "guitar": [
@@ -182,12 +162,30 @@
       "keyboard": [
         "박민석"
       ],
-      "number": "9",
+      "number": "8",
       "songArtist": "오대천왕",
       "songName": "멋진 헛간",
       "vocal": [
         "박지한",
         "박건도"
+      ]
+    },
+    {
+      "bass": [
+        "홍윤표"
+      ],
+      "drum": [
+        "한지우"
+      ],
+      "guitar": [
+        "김상경",
+        "권예찬"
+      ],
+      "number": "9",
+      "songArtist": "FT-ISLAND",
+      "songName": "PRAY",
+      "vocal": [
+        "김선우"
       ]
     },
     {
@@ -231,7 +229,7 @@
     },
     {
       "bass": [
-        "장우종"
+        "홍윤표"
       ],
       "drum": [
         "안승환"
@@ -241,7 +239,7 @@
         "김원후"
       ],
       "keyboard": [
-        "홍윤표"
+        "장우종"
       ],
       "number": "12",
       "songArtist": "자작곡",
@@ -275,24 +273,23 @@
     },
     {
       "bass": [
-        "이승하"
+        "한지우"
       ],
       "drum": [
-        "이유진"
+        "김석진"
       ],
       "guitar": [
-        "조현호",
+        "강재호",
         "이주원"
       ],
       "keyboard": [
-        "장우종",
-        "황정빈"
+        "김민정"
       ],
       "number": "14",
-      "songArtist": "자우림",
-      "songName": "스물 다섯, 스물 하나",
+      "songArtist": "TOUCHED",
+      "songName": "새벽별",
       "vocal": [
-        "김민지"
+        "이시연"
       ]
     },
     {
@@ -318,44 +315,24 @@
     },
     {
       "bass": [
-        "한지우"
+        "이서영"
       ],
       "drum": [
-        "김석진"
+        "김영균"
       ],
       "guitar": [
-        "강재호",
-        "이주원"
+        "김원후",
+        "이지호"
       ],
       "keyboard": [
-        "김민정"
+        "이서은",
+        "박민석"
       ],
       "number": "16",
-      "songArtist": "TOUCHED",
-      "songName": "새벽별",
+      "songArtist": "백예린",
+      "songName": "la la la lovesong",
       "vocal": [
-        "이시연"
-      ]
-    },
-    {
-      "bass": [
-        "임은수"
-      ],
-      "drum": [
-        "이유진"
-      ],
-      "guitar": [
-        "김상경",
-        "김원후"
-      ],
-      "keyboard": [
-        "김민지"
-      ],
-      "number": "17",
-      "songArtist": "브로큰 발렌타인",
-      "songName": "알루미늄",
-      "vocal": [
-        "안병규", "이주원"
+        "김다솔"
       ]
     },
     {
@@ -372,32 +349,11 @@
       "keyboard": [
         "이서영"
       ],
-      "number": "18",
+      "number": "17",
       "songArtist": "Tokyo Jihen",
-      "songName": "Marunouchi Sadistic",
+      "songName": "Teenage Fantasy",
       "vocal": [
         "이시연"
-      ]
-    },
-    {
-      "bass": [
-        "이승하"
-      ],
-      "drum": [
-        "김석진"
-      ],
-      "guitar": [
-        "강재호",
-        "김민제"
-      ],
-      "keyboard": [
-        "장우종"
-      ],
-      "number": "19",
-      "songArtist": "민수는 혼란스럽다",
-      "songName": "민수",
-      "vocal": [
-        "최현석"
       ]
     },
     {
@@ -414,7 +370,7 @@
         "박민석",
         "이서은"
       ],
-      "number": "20",
+      "number": "21",
       "songArtist": "버스커버스커",
       "songName": "막걸리나",
       "vocal": [
@@ -435,29 +391,11 @@
       "keyboard": [
         "이서은"
       ],
-      "number": "21",
+      "number": "22",
       "songArtist": "TOUCHED",
       "songName": "Highlight",
       "vocal": [
         "김준서"
-      ]
-    },
-    {
-      "bass": [
-        "홍윤표"
-      ],
-      "drum": [
-        "한지우"
-      ],
-      "guitar": [
-        "김상경",
-        "권예찬"
-      ],
-      "number": "22",
-      "songArtist": "FT-ISLAND",
-      "songName": "PRAY",
-      "vocal": [
-        "김선우"
       ]
     },
     {

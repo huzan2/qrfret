@@ -64,9 +64,9 @@ const DB = () => {
                 pattern="[0-9]*"
                 maxLength={11}
                 onChange={onChangeInputNumber}
-                className="block w-10/12 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                className="block w-10/12 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-base sm:leading-6"
               />
-              <button className="w-1/6 rounded-md bg-indigo-600 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 ">
+              <button className="w-1/6 rounded-md bg-indigo-600 text-base font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 ">
                 검색
               </button>
             </div>
@@ -77,7 +77,7 @@ const DB = () => {
             <CustomButton title={"뒤로가기"} onClick={onClickBackButton} />
             <div>
               {numList && numList.length > 0 ? (
-                <ul role="list" className="divide-y divide-gray-100 mt-5">
+                <ul className="divide-y divide-gray-600 mt-5">
                   {numList.map((ele, idx) => (
                     <li
                       key={ele.value.num}
@@ -85,13 +85,13 @@ const DB = () => {
                     >
                       <div className="flex min-w-0 gap-x-4">
                         <div className="min-w-0 flex-auto">
-                          <p className="text-sm font-semibold leading-6 text-gray-900">
+                          <p className="text-base font-semibold leading-6 text-gray-900">
                             {ele.value.num}
                           </p>
                         </div>
                       </div>
                       <div className="sm:flex sm:flex-col sm:items-end">
-                        <p className="text-sm leading-6 text-gray-900">
+                        <p className="text-base leading-6 text-gray-900">
                           {ele.value.phoneNumber}
                         </p>
                       </div>
