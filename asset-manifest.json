@@ -1,14 +1,18 @@
 {
   "files": {
-    "main.css": "/qrfret/static/css/main.fd895181.css",
-    "main.js": "/qrfret/static/js/main.f7db94fd.js",
-    "static/media/logofret.jpeg": "/qrfret/static/media/logofret.f9b7af7eb9aa8c2b98a1.jpeg",
+    "main.css": "/qrfret/static/css/main.3b5d1ede.css",
+    "main.js": "/qrfret/static/js/main.58ec09ac.js",
+    "static/media/image-logo.png": "/qrfret/static/media/image-logo.e6f711daa288e175544f.png",
+    "static/media/icon-instagram.svg": "/qrfret/static/media/icon-instagram.c83e628eea4e83e0d2b6c8e54910510c.svg",
+    "static/media/icon-github.svg": "/qrfret/static/media/icon-github.b2294bccaa20da50b7d58419f07c0892.svg",
+    "static/media/icon-kakaotalk.svg": "/qrfret/static/media/icon-kakaotalk.7b7907fd5abf55f0f4ccdbf58cc8a1ac.svg",
     "index.html": "/qrfret/index.html",
-    "main.fd895181.css.map": "/qrfret/static/css/main.fd895181.css.map",
-    "main.f7db94fd.js.map": "/qrfret/static/js/main.f7db94fd.js.map"
+    "static/media/icon-youtube.svg": "/qrfret/static/media/icon-youtube.6806408aa1bf55b7f1aaba51978e649e.svg",
+    "main.3b5d1ede.css.map": "/qrfret/static/css/main.3b5d1ede.css.map",
+    "main.58ec09ac.js.map": "/qrfret/static/js/main.58ec09ac.js.map"
   },
   "entrypoints": [
-    "static/css/main.fd895181.css",
-    "static/js/main.f7db94fd.js"
+    "static/css/main.3b5d1ede.css",
+    "static/js/main.58ec09ac.js"
   ]
 }
