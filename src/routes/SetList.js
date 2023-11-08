@@ -27,7 +27,7 @@ const SetList = () => {
   useEffect(() => {
     setIsLoading(true);
     getSetList().then((res) => {
-      console.log(res);
+      console.log(res)
       if (res.setList)
         setSetList(res.setList.sort((a, b) => a.number - b.number));
     });
@@ -42,7 +42,7 @@ const SetList = () => {
             {setList && setList.length > 0
               ? setList.map((item, index) => {
                   return (
-                    <SetListItem item={item} index={index} />
+                    <SetListItem key={`item-${index}`} item={item} index={index} />
                   );
                 })
               : null}

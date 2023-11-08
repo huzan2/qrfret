@@ -1,20 +1,35 @@
-import { getNumberList } from "APIs/APIRaffle";
+import { DEV_ResetRaffle, getNumberList } from "APIs/APIRaffle";
 import CustomButton from "Components/CustomButton";
 import PageTitle from "Components/PageTitle";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { cookieNames, deleteCookie } from "util/cookieUtil";
 
 const DB = () => {
   const navigate = useNavigate();
   const [isloading, setIsLoading] = useState(true);
   const [numList, setNumList] = useState([]);
   const [searchNum, setSearchNum] = useState();
+
   const onClickBackButton = () => {
     navigate("/");
   };
+
   const onChangeInputNumber = (e) => {
     setSearchNum(e.target.value);
   };
+
+  const onClickResetRaffle = () => {
+    const confirmReset = window.confirm('DB를 초기화하시겠습니까?');
+    if(confirmReset){
+      DEV_ResetRaffle();
+      deleteCookie(cookieNames.phoneNumber);
+      deleteCookie(cookieNames.ticketNumber);
+      window.alert('DB를 초기화했습니다.');
+      navigate('/DEV')
+    }
+  };
+
   useEffect(() => {
     if (isloading) {
       console.log("[DB Page] LOADING...");
@@ -22,15 +37,11 @@ const DB = () => {
       console.log("[DB Page] LOADING COMPLETE");
     }
   }, [isloading]);
+
   useEffect(() => {
     setIsLoading(true);
     getNumberList().then((res) => {
       if (res) {
-        console.log(
-          Object.entries(res)
-            .map(([key, value]) => ({ key, value }))
-            .sort((a, b) => b.value.num - a.value.num)
-        );
         setNumList(
           Object.entries(res)
             .map(([key, value]) => ({ key, value }))
@@ -40,6 +51,7 @@ const DB = () => {
     });
     setIsLoading(false);
   }, []);
+
   return (
     <div>
       <div className="flex min-h-full items-center flex-1 flex-col justify-center">
@@ -58,6 +70,10 @@ const DB = () => {
                 검색
               </button>
             </div>
+            <CustomButton
+              title={"추첨권 DB 초기화"}
+              onClick={onClickResetRaffle}
+            />
             <CustomButton title={"뒤로가기"} onClick={onClickBackButton} />
             <div>
               {numList && numList.length > 0 ? (

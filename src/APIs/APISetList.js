@@ -28,7 +28,7 @@ import { dbref } from "../firebase"
 // }
 
 export const getSetList = async () => {
-  const res = await get(child(dbref, "setlist"))
+  const res = await get(child(dbref, "setList"))
   try {
     return res.val()
   } catch (err) {

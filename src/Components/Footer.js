@@ -26,7 +26,7 @@ const Footer = () => {
   }
 
   return (
-    <div className="flex justify-center w-full mt-2 gap-4">
+    <div className="flex justify-center w-full mt-6 gap-4">
       <img onClick={onClickInsta} src={IconInstagram} alt="instagram" className="h-auto w-8"/>
       <img onClick={onClickYoutube} src={IconYoutube} alt="youtube" className="h-auto w-8"/>
       <img onClick={onClickKakao} src={IconKakaotalk} alt="kakaotalk" className="h-auto w-8"/>

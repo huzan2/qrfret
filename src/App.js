@@ -7,7 +7,7 @@ function App() {
   return (
     <BrowserRouter basename="/qrfret">
       <div className="flex justify-center align-center">
-        <div className="flex flex-1 flex-col max-w-lg justify-center w-96 px-6 py-12 lg:px-8">
+        <div className="flex flex-1 flex-col max-w-lg justify-center w-96 px-6 pt-12 pb-6 lg:px-8">
           <Logo />
           <Routers />
           <Footer />
