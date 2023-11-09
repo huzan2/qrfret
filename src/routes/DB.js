@@ -19,14 +19,35 @@ const DB = () => {
     setSearchNum(e.target.value);
   };
 
+  const inputNumberhandler = (e) => {
+    if (e.target.value.length > e.target.maxLength) {
+      e.target.value = e.target.value.slice(0, e.target.maxLength);
+    }
+  };
+
   const onClickResetRaffle = () => {
-    const confirmReset = window.confirm('DB를 초기화하시겠습니까?');
-    if(confirmReset){
+    const confirmReset = window.confirm("DB를 초기화하시겠습니까?");
+    if (confirmReset) {
       DEV_ResetRaffle();
       deleteCookie(cookieNames.phoneNumber);
       deleteCookie(cookieNames.ticketNumber);
-      window.alert('DB를 초기화했습니다.');
-      navigate('/DEV')
+      window.alert("DB를 초기화했습니다.");
+      navigate("/DEV");
+    }
+  };
+
+  const phoneSearch = (target) => {
+    if (target.length !== 4) {
+      alert("전화번호 뒷 4자리를 입력해주세요");
+      return;
+    }
+    const result = numList.filter((e) => e.key.slice(-4, 11) === target);
+    if (result.length < 1) {
+      alert("검색 결과가 없습니다");
+    } else {
+      navigate("/DBsearch", {
+        state: result,
+      });
     }
   };
 
@@ -62,11 +83,18 @@ const DB = () => {
               <input
                 type="number"
                 pattern="[0-9]*"
-                maxLength={11}
+                maxLength={4}
+                placeholder="전화번호 끝 4자리"
                 onChange={onChangeInputNumber}
+                onInput={inputNumberhandler}
                 className="block w-10/12 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-base sm:leading-6"
               />
-              <button className="w-1/6 rounded-md bg-indigo-600 text-base font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 ">
+              <button
+                onClick={() => {
+                  phoneSearch(searchNum);
+                }}
+                className="w-1/6 rounded-md bg-indigo-600 text-base font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 "
+              >
                 검색
               </button>
             </div>
