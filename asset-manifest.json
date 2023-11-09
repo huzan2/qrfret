@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/qrfret/static/css/main.b203f93e.css",
-    "main.js": "/qrfret/static/js/main.d0678217.js",
+    "main.css": "/qrfret/static/css/main.0d64da06.css",
+    "main.js": "/qrfret/static/js/main.938721eb.js",
     "static/media/Tenada.ttf": "/qrfret/static/media/Tenada.0cfe8963fde304575974.ttf",
     "static/media/NanumSquareR.ttf": "/qrfret/static/media/NanumSquareR.924c33f60f994924964c.ttf",
     "static/media/image-logo-removebg.png": "/qrfret/static/media/image-logo-removebg.6b5f2c76fffc9bbcaa45.png",
@@ -10,11 +10,11 @@
     "static/media/icon-kakaotalk.svg": "/qrfret/static/media/icon-kakaotalk.7b7907fd5abf55f0f4ccdbf58cc8a1ac.svg",
     "index.html": "/qrfret/index.html",
     "static/media/icon-youtube.svg": "/qrfret/static/media/icon-youtube.6806408aa1bf55b7f1aaba51978e649e.svg",
-    "main.b203f93e.css.map": "/qrfret/static/css/main.b203f93e.css.map",
-    "main.d0678217.js.map": "/qrfret/static/js/main.d0678217.js.map"
+    "main.0d64da06.css.map": "/qrfret/static/css/main.0d64da06.css.map",
+    "main.938721eb.js.map": "/qrfret/static/js/main.938721eb.js.map"
   },
   "entrypoints": [
-    "static/css/main.b203f93e.css",
-    "static/js/main.d0678217.js"
+    "static/css/main.0d64da06.css",
+    "static/js/main.938721eb.js"
   ]
 }
