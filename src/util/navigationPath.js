@@ -5,4 +5,5 @@ export const navigationPath = {
   RAFFLE_INPUT_PAGE: "/raffleinput",
   RAFFLE_CONFIRM_PAGE: "/raffleconfirm",
   SET_LIST_PAGE: "/setlist",
+  GUEST_BOOK_PAGE: "/guestbook",
 }

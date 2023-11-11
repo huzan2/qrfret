@@ -1,4 +1,5 @@
 import DEVPage from "Pages/DEVPage";
+import GuestBookPage from "Pages/GuestBookPage";
 import HomePage from "Pages/HomePage";
 import RaffleConfirmPage from "Pages/RaffleConfirmPage";
 import RaffleDBPage from "Pages/RaffleDBPage";
@@ -33,6 +34,10 @@ const Routers = () => {
     {
       path: navigationPath.SET_LIST_PAGE,
       element: <SetListPage />
+    },
+    {
+      path: navigationPath.GUEST_BOOK_PAGE,
+      element: <GuestBookPage />
     },
   ]
   
