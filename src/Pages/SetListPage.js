@@ -1,16 +1,10 @@
 import { getSetList } from "APIs/APISetList";
 import SetListItem from "Components/SetListitem";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 
-const SetList = () => {
-  const navigate = useNavigate();
+const SetListPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [setList, setSetList] = useState([]);
-
-  const onClickBackButton = () => {
-    navigate("/");
-  };
 
   //>>>>>>>>>>>>>>>>>>>>>>>>>>>>FOR DEBUG>>>>>>>>>>>>>>>
   useEffect(() => {
@@ -54,4 +48,4 @@ const SetList = () => {
   );
 };
 
-export default SetList;
+export default SetListPage;

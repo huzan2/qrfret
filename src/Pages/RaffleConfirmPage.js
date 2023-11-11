@@ -4,22 +4,19 @@ import PageTitle from "Components/PageTitle"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { cookieNames, getCookie } from "util/cookieUtil"
+import { navigationPath } from "util/navigationPath"
 
-const RaffleTicket = () => {
+const RaffleConfirmPage = () => {
   const [isLoading, setIsLoading] = useState(true)
   const [phoneNumber, setPhoneNumber] = useState("")
   const [ticketNumber, setTicketNumber] = useState(0)
   const navigate = useNavigate();
 
-  const onClickBackToMain = () => {
-    navigate("/")
-  }
-
   useEffect(() => {
     if (isLoading) {
-      console.log("[RaffleTicket Page] LOADING...")
+      console.log("[RaffleConfirmPage] LOADING...")
     } else {
-      console.log("[RaffleTicket Page] LOADING COMPLETE!")
+      console.log("[RaffleConfirmPage] LOADING COMPLETE!")
     }
   }, [isLoading])
 
@@ -32,7 +29,7 @@ const RaffleTicket = () => {
         setPhoneNumber(cookiePhoneNumber);
         setTicketNumber(isExistPhoneNumber.num);
       }else{
-        navigate('/raffle')
+        navigate(navigationPath.RAFFLE_INPUT_PAGE)
       }
       setIsLoading(false)
     }
@@ -56,4 +53,4 @@ const RaffleTicket = () => {
   )
 }
 
-export default RaffleTicket
+export default RaffleConfirmPage

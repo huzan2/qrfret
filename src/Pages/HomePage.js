@@ -4,8 +4,9 @@ import PageTitle from "Components/PageTitle";
 import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { cookieNames, getCookie } from "util/cookieUtil";
+import { navigationPath } from "util/navigationPath";
 
-const Home = () => {
+const HomePage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -15,9 +16,9 @@ const Home = () => {
 
   useEffect(() => {
     if (isLoading) {
-      console.log("[Home Papge] LOADING...");
+      console.log("[HomePage] LOADING...");
     } else {
-      console.log("[Home Papge] LOADING COMPLETE!");
+      console.log("[HomePage] LOADING COMPLETE!");
     }
   }, [isLoading]);
   //<<<<<<<<<<<<<<<<<<<<<<<<<<<<FOR DEBUG<<<<<<<<<<<<<<<
@@ -34,35 +35,35 @@ const Home = () => {
   }, []);
 
   const onClickSetListButton = () => {
-    navigate("/setlist");
+    navigate(navigationPath.SET_LIST_PAGE);
   };
 
   const onClickRaffleButton = () => {
     if (getCookie(cookieNames.phoneNumber) === undefined) {
-      navigate("/raffle");
+      navigate(navigationPath.RAFFLE_INPUT_PAGE);
     } else {
-      navigate("/raffleticket");
+      navigate(navigationPath.RAFFLE_CONFIRM_PAGE);
     }
   };
 
   useEffect(() => {
     const type = searchParams.get('type');
     if(type === 'setlist'){
-      navigate('/setlist')
+      navigate(navigationPath.SET_LIST_PAGE)
     }else if(type === 'raffle'){
       if (getCookie(cookieNames.phoneNumber) === undefined) {
-        navigate("/raffle");
+        navigate(navigationPath.RAFFLE_INPUT_PAGE);
       } else {
-        navigate("/raffleticket");
+        navigate(navigationPath.RAFFLE_CONFIRM_PAGE);
       }
     }
   }, [searchParams])
 
   return (
     <>
-      <div className="flex flex-col justify-center">
+      <div className="flex flex-col justify-center m-6">
         {isLoading ? null : (
-          <div className="m-6">
+          <div>
             <Logo/>
             <PageTitle title={"2023 14fret 정기공연"} />
             <PageTitle title={"Fly with 14FRET"} />
@@ -81,4 +82,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default HomePage;

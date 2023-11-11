@@ -8,10 +8,10 @@ import PageTitle from "Components/PageTitle";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { cookieNames, setCookie } from "util/cookieUtil";
+import { navigationPath } from "util/navigationPath";
 
-const Raffle = () => {
+const RaffleInputPage = () => {
   const [phoneNumber, setPhoneNumber] = useState(undefined);
-  const [submited, setSubmited] = useState(false);
   const [validated, setValidated] = useState(false);
   const [eventNumber, setEventNumber] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
@@ -21,14 +21,14 @@ const Raffle = () => {
   const TEST = async () => {};
 
   useEffect(() => {
-    console.log("[Raffle] eventNumber CHANGED: ", eventNumber);
+    console.log("[RaffleInputPage] eventNumber CHANGED: ", eventNumber);
   }, [eventNumber]);
 
   useEffect(() => {
     if (isLoading) {
-      console.log("[Raffle] LOADING...");
+      console.log("[RaffleInputPage] LOADING...");
     } else {
-      console.log("[Raffle] LOADING COMPLETE!");
+      console.log("[RaffleInputPage] LOADING COMPLETE!");
     }
   }, [isLoading]);
   //<<<<<<<<<<<<<<<<<<<<<<<<<<<<FOR DEBUG<<<<<<<<<<<<<<<<<<<<<<<<<<<<
@@ -38,16 +38,16 @@ const Raffle = () => {
    */
   const onClickSubmit = async () => {
     if (!phoneNumber || phoneNumber.length < 11) {
-      console.log("[Raffle] UNVALID INPUT");
+      console.log("[RaffleInputPage] UNVALID INPUT");
       setValidated(true);
       return;
     }
     const isExistPhoneNumber = await getIsExistPhoneNumber(phoneNumber);
     if (isExistPhoneNumber) {
-      console.log("[Raffle] PHONE NUMBER EXIST");
+      console.log("[RaffleInputPage] PHONE NUMBER EXIST");
       setCookie(cookieNames.phoneNumber, phoneNumber);
       setCookie(cookieNames.ticketNumber, isExistPhoneNumber.num);
-      navigate("/raffleticket");
+      navigate(navigationPath.RAFFLE_CONFIRM_PAGE);
     } else {
       const count = await getCount()
         .then((res) => {
@@ -60,10 +60,10 @@ const Raffle = () => {
         });
       postPhoneNumber(phoneNumber, count)
         .then(() => {
-          console.log("[Raffle] PHONE NUMBER CREATED");
+          console.log("[RaffleInputPage] PHONE NUMBER CREATED");
           setCookie(cookieNames.phoneNumber, phoneNumber);
           setCookie(cookieNames.ticketNumber, count);
-          navigate("/raffleticket");
+          navigate(navigationPath.RAFFLE_CONFIRM_PAGE);
         })
         .catch((err) => {
           console.warn(err);
@@ -71,18 +71,6 @@ const Raffle = () => {
     }
   };
 
-  /**
-   * 메인페이지로 돌아가기
-   */
-  const onClickBackToMain = () => {
-    setSubmited(false);
-    setPhoneNumber(0);
-    setValidated(false);
-  };
-
-  /**
-   *
-   */
   const inputPhoneNumberHandler = (e) => {
     if (e.target.value.length > e.target.maxLength)
       e.target.value = e.target.value.slice(0, e.target.maxLength);
@@ -90,10 +78,6 @@ const Raffle = () => {
 
   const onChangeInputPhoneNumber = (e) => {
     setPhoneNumber(e.target.value);
-  };
-
-  const onClickBackButton = () => {
-    navigate("/");
   };
 
   /**
@@ -126,7 +110,7 @@ const Raffle = () => {
                     onChange={onChangeInputPhoneNumber}
                     type="number"
                     pattern="[0-9]*"
-                    placeholder="010000000"
+                    placeholder="01012345678"
                     maxLength={11}
                     required
                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-base sm:leading-6"
@@ -155,4 +139,4 @@ const Raffle = () => {
   );
 };
 
-export default Raffle;
+export default RaffleInputPage;

@@ -1,42 +1,38 @@
+import DEVPage from "Pages/DEVPage";
+import HomePage from "Pages/HomePage";
+import RaffleConfirmPage from "Pages/RaffleConfirmPage";
+import RaffleDBPage from "Pages/RaffleDBPage";
+import RaffleInputPage from "Pages/RaffleInputPage";
+import SetListPage from "Pages/SetListPage";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import DB from "routes/DB";
-import DBsearch from "routes/DBsearch";
-import DEVPage from "routes/DEV";
-import Home from "routes/Home";
-import Raffle from "routes/Raffle";
-import RaffleTicket from "routes/RaffleTicket";
-import SetList from "routes/SetList";
+import { navigationPath } from "util/navigationPath";
 
 const Routers = () => {
   const basename = process.env.PUBLIC_URL;
   const routes = [
     {
-      path: '/',
-      element: <Home />
+      path: navigationPath.HOME_PAGE,
+      element: <HomePage />
     },
     {
-      path: '/raffle',
-      element: <Raffle />
-    },
-    {
-      path: '/raffleticket',
-      element: <RaffleTicket />
-    },
-    {
-      path: '/setlist',
-      element: <SetList />
-    },
-    {
-      path: '/DEV',
+      path: navigationPath.DEV_PAGE,
       element: <DEVPage />
     },
     {
-      path: '/DB',
-      element: <DB />
+      path: navigationPath.RAFFLE_DB_PAGE,
+      element: <RaffleDBPage />
     },
     {
-      path: '/DBsearch',
-      element: <DBsearch />
+      path: navigationPath.RAFFLE_INPUT_PAGE,
+      element: <RaffleInputPage />
+    },
+    {
+      path: navigationPath.RAFFLE_CONFIRM_PAGE,
+      element: <RaffleConfirmPage />
+    },
+    {
+      path: navigationPath.SET_LIST_PAGE,
+      element: <SetListPage />
     },
   ]
   

@@ -1,18 +1,52 @@
 import { DEV_ResetRaffle, getNumberList } from "APIs/APIRaffle";
 import CustomButton from "Components/CustomButton";
+import Logo from "Components/Logo";
 import PageTitle from "Components/PageTitle";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { cookieNames, deleteCookie } from "util/cookieUtil";
+import { navigationPath } from "util/navigationPath";
 
-const DB = () => {
+const RaffleDBPage = () => {
   const navigate = useNavigate();
   const [isloading, setIsLoading] = useState(true);
   const [numList, setNumList] = useState([]);
-  const [searchNum, setSearchNum] = useState();
+  const [searchNum, setSearchNum] = useState('');
+  const [filteredList, setFilteredList] = useState([]);
+
+
+  //>>>>>>>>>>>>>>>>>>>>>>>>>>>>FOR DEBUG>>>>>>>>>>>>>>>
+  const TEST = async () => {};
+
+  useEffect(() => {
+    if (isloading) {
+      console.log("[DB Page] LOADING...");
+    } else {
+      console.log("[DB Page] LOADING COMPLETE");
+    }
+  }, [isloading]);
+
+  //<<<<<<<<<<<<<<<<<<<<<<<<<<<<FOR DEBUG<<<<<<<<<<<<<<<
+
+  /**
+   * FOR INITIALIZE
+   */
+  useEffect(() => {
+    setIsLoading(true);
+    getNumberList().then((res) => {
+      if (res) {
+        const rs = Object.entries(res)
+          .map(([key, value]) => ({ key, value }))
+          .sort((a, b) => a.value.num - b.value.num)
+        setNumList(rs);
+        setFilteredList(rs);
+      }
+    });
+    setIsLoading(false);
+  }, []);
 
   const onClickBackButton = () => {
-    navigate("/");
+    navigate(navigationPath.HOME_PAGE);
   };
 
   const onChangeInputNumber = (e) => {
@@ -25,88 +59,64 @@ const DB = () => {
     }
   };
 
+  /**
+   * FOR DEV: 추첨권 DB 초기화
+   */
   const onClickResetRaffle = () => {
+    if (searchNum !== process.env.REACT_APP_DB_INIT_PASSWORD) {
+      window.alert("비밀번호가 틀렸습니다.");
+      return;
+    }
     const confirmReset = window.confirm("DB를 초기화하시겠습니까?");
     if (confirmReset) {
       DEV_ResetRaffle();
       deleteCookie(cookieNames.phoneNumber);
       deleteCookie(cookieNames.ticketNumber);
       window.alert("DB를 초기화했습니다.");
-      navigate("/DEV");
+      navigate(navigationPath.DEV_PAGE);
     }
   };
 
-  const phoneSearch = (target) => {
-    if (target.length !== 4) {
-      alert("전화번호 뒷 4자리를 입력해주세요");
-      return;
-    }
-    const result = numList.filter((e) => e.key.slice(-4, 11) === target);
-    if (result.length < 1) {
-      alert("검색 결과가 없습니다");
-    } else {
-      navigate("/DBsearch", {
-        state: result,
-      });
-    }
-  };
-
+  /**
+   * 출력 리스트 필터링
+   */
   useEffect(() => {
-    if (isloading) {
-      console.log("[DB Page] LOADING...");
+    if (searchNum === '') {
+      if (numList.length === 0) return;
+      setFilteredList(numList)
     } else {
-      console.log("[DB Page] LOADING COMPLETE");
+      const res = numList.filter((e) => {
+        return e.key.indexOf(searchNum) !== -1
+      })
+      setFilteredList(res)
     }
-  }, [isloading]);
-
-  useEffect(() => {
-    setIsLoading(true);
-    getNumberList().then((res) => {
-      if (res) {
-        setNumList(
-          Object.entries(res)
-            .map(([key, value]) => ({ key, value }))
-            .sort((a, b) => a.value.num - b.value.num)
-        );
-      }
-    });
-    setIsLoading(false);
-  }, []);
+  }, [searchNum])
 
   return (
     <div>
       <div className="flex min-h-full items-center flex-1 flex-col justify-center">
+        <Logo />
         <PageTitle title={"추첨번호 DB 열람"} />
         {isloading ? null : (
-          <div className="mt-4 w-full sm:mx-auto sm:max-w-sm">
-            <div className="flex">
-              <input
-                type="number"
-                pattern="[0-9]*"
-                maxLength={4}
-                placeholder="전화번호 끝 4자리"
-                onChange={onChangeInputNumber}
-                onInput={inputNumberhandler}
-                className="block w-10/12 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-base sm:leading-6"
-              />
-              <button
-                onClick={() => {
-                  phoneSearch(searchNum);
-                }}
-                className="w-1/6 rounded-md bg-indigo-600 text-base font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 "
-              >
-                검색
-              </button>
-            </div>
+          <div className="mt-2 w-full sm:mx-auto sm:max-w-sm">
             <CustomButton
               title={"추첨권 DB 초기화"}
               onClick={onClickResetRaffle}
             />
             <CustomButton title={"뒤로가기"} onClick={onClickBackButton} />
+            <input
+              type="number"
+              pattern="[0-9]*"
+              maxLength={11}
+              placeholder="전화번호 검색"
+              onChange={onChangeInputNumber}
+              onInput={inputNumberhandler}
+              className="block w-full rounded-md border-0 py-1.5 mt-7 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-base sm:leading-6"
+            />
             <div>
-              {numList && numList.length > 0 ? (
+              {filteredList && filteredList.length > 0 ? (
                 <ul className="divide-y divide-gray-600 mt-5">
-                  {numList.map((ele, idx) => (
+                  {filteredList.map((ele, idx) => (
                     <li
                       key={ele.value.num}
                       className="flex justify-between py-2"
@@ -135,4 +145,4 @@ const DB = () => {
   );
 };
 
-export default DB;
+export default RaffleDBPage;
