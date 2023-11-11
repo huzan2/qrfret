@@ -1,23 +1,49 @@
-import { Route, Routes } from "react-router-dom";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import DB from "routes/DB";
+import DBsearch from "routes/DBsearch";
 import DEVPage from "routes/DEV";
 import Home from "routes/Home";
 import Raffle from "routes/Raffle";
 import RaffleTicket from "routes/RaffleTicket";
 import SetList from "routes/SetList";
-import DBsearch from "routes/DBsearch";
 
 const Routers = () => {
+  const basename = process.env.PUBLIC_URL;
+  const routes = [
+    {
+      path: '/',
+      element: <Home />
+    },
+    {
+      path: '/raffle',
+      element: <Raffle />
+    },
+    {
+      path: '/raffleticket',
+      element: <RaffleTicket />
+    },
+    {
+      path: '/setlist',
+      element: <SetList />
+    },
+    {
+      path: '/DEV',
+      element: <DEVPage />
+    },
+    {
+      path: '/DB',
+      element: <DB />
+    },
+    {
+      path: '/DBsearch',
+      element: <DBsearch />
+    },
+  ]
+  
+  const router = createBrowserRouter(routes, {basename: basename});
+
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/raffle" element={<Raffle />} />
-      <Route path="/raffleticket" element={<RaffleTicket />} />
-      <Route path="/setlist" element={<SetList />} />
-      <Route path="/DEV" element={<DEVPage />} />
-      <Route path="/DB" element={<DB />} />
-      <Route path="/DBsearch" element={<DBsearch />} />
-    </Routes>
+      <RouterProvider router={router}/>
   );
 };
 
