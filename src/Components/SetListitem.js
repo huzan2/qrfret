@@ -19,14 +19,6 @@ const Session = ({ session, member }) => {
 };
 
 const SetListItem = ({ item, index }) => {
-  const [isOpenLyric, setIsOpenLyric] = useState(false);
-
-  const onClickItem = () => {
-    if (item.songArtist.trim() === "자작곡") {
-      setIsOpenLyric((prev) => !prev);
-    }
-  };
-
   return (
     <li
       className="flex justify-between gap-x-6 py-5 w-full"
@@ -38,7 +30,6 @@ const SetListItem = ({ item, index }) => {
           </p>
           <span
             className="font-bold leading-6 mb-2 text-xl flex justify-center flex-wrap gap-1"
-            onClick={onClickItem}
           >
             <div>{`${item.songName}`}</div>
             <div>-</div>
@@ -51,45 +42,62 @@ const SetListItem = ({ item, index }) => {
             <Session session={"bass"} member={item.bass} />
             <Session session={"drum"} member={item.drum} />
           </div>
-          {isOpenLyric && <Lyric song={item.songName} />}
+          {item.lyric !== undefined && <Lyric lyric={item.lyric} />}
         </div>
       </div>
     </li>
   );
 };
 
-const Lyric = ({ song }) => {
-  if (song === "권예찬") {
-    return (
-      <div className="bg-red text-center flex-col gap-1 text-sm mt-2">
-        <p>안녕하세요 쟤 이름을 소개할게요 쟤 이름은 권예찬</p>
-        <p>한 달만에 알바 네 번을 짤리고 꼬라지가 좀 난 상태에요</p>
-        <p>.</p>
-        <p>여자친구 만들려고 미팅 나갔다가 퇴짜맞은 권예찬</p>
-        <p>술자리에 안주 대신 이 얘길 들으면 그 날은 집에 못가죠</p>
-        <p>.</p>
-        <p className="font-bold">(권예찬)</p>
-        <p>선배 말은 귓등으로 들어</p>
-        <p className="font-bold">(권예찬)</p>
-        <p>메트로놈 연습 갖다버려</p>
-        <p className="font-bold">(권예찬)</p>
-        <p>술에 꼴아 길바닥에 누워</p>
-        <p className="font-bold">(권예찬)</p>
-        <p>선배 말은 귓등으로 들어</p>
-        <p className="font-bold">(권예찬)</p>
-        <p>메트로놈 연습 갖다버려</p>
-        <p className="font-bold">(권예찬)</p>
-        <p>술에 꼴아 길바닥에 누워</p>
-        <p className="font-bold">x3</p>
-      </div>
-    );
-  } else {
-    return (
-      <div className="bg-red text-center flex-col gap-1 text-sm mt-2">
-        가사 준비 중...
-      </div>
-    );
+const Lyric = ({ lyric }) => {
+  const [isOpen, setIsOpen] = useState(false)
+  const LYRIC_HEIGHT = (lyric.match(/\n/g).filter(item => item !== '').length) * 1.25;
+
+  const lyricFormatter = (lyric) => {
+    const lyricFormatted = []
+    const tmp = lyric.split('{')
+    for (const e in tmp) {
+      let splited = tmp[e].split('}\n');
+      if (splited.length < 2) splited = tmp[e].split('}')
+      if (splited.length === 2) {
+        lyricFormatted.push(
+          <p key={`ly-${e}`} className="font-bold whitespace-pre-line">{splited[0]}</p>, splited[1]
+        );
+      } else {
+        lyricFormatted.push(
+          splited[0]
+        )
+      }
+    }
+    return lyricFormatted
   }
+
+  const onClickOpen = () => {
+    setIsOpen(true)
+  }
+
+  const onClickClose = () => {
+    setIsOpen(false)
+  }
+
+  return (
+    <div className="text-center text-sm mt-2 whitespace-pre-line">
+      {isOpen ?
+        <div style={{height: `${LYRIC_HEIGHT + 1.25}rem`}} className={`transition-all duration-200`}>
+          {lyricFormatter(lyric)}
+          <div onClick={onClickClose}>
+            ▲
+          </div>
+        </div>
+        :
+        <div className={"h-3 transition-all duration-200"}>
+          <div onClick={onClickOpen}>
+            ▼
+          </div>
+        </div>
+      }
+    </div>
+  );
 };
 
 export default SetListItem;

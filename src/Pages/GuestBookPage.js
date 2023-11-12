@@ -5,6 +5,7 @@ import Logo from "Components/Logo";
 import PageTitle from "Components/PageTitle";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { navigationPath } from "util/navigationPath";
 
 const GuestBookPage = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -57,7 +58,7 @@ const GuestBookPage = () => {
    * events
    */
   const onClickBackButton = () => {
-    console.log(state)
+    if (state === null) navigate(navigationPath.SET_LIST_PAGE)
     if (state !== undefined) navigate(state)
   }
 
