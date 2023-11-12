@@ -27,15 +27,19 @@ import { dbref } from "../firebase"
 //   ]
 // }
 
-export const getSetList = async () => {
-  const res = await get(child(dbref, "setList"))
-  try {
-    return res.val()
-  } catch (err) {
-    throw err
+const APISetList = {
+  getSetList: async () => {
+    const res = await get(child(dbref, "setList"))
+    try {
+      return res.val()
+    } catch (err) {
+      throw err
+    }
+  },
+  
+  resetSetList: async () => {
+
   }
 }
 
-export const resetSetList = async () => {
-
-}
+export default APISetList

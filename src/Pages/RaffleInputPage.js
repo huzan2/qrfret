@@ -1,9 +1,5 @@
-import {
-  getCount,
-  getIsExistPhoneNumber,
-  postPhoneNumber,
-  setCount,
-} from "APIs/APIRaffle";
+import APIRaffle from 'APIs/APIRaffle';
+import CustomButton from "Components/CustomButton";
 import PageTitle from "Components/PageTitle";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -42,23 +38,23 @@ const RaffleInputPage = () => {
       setValidated(true);
       return;
     }
-    const isExistPhoneNumber = await getIsExistPhoneNumber(phoneNumber);
+    const isExistPhoneNumber = await APIRaffle.getIsExistPhoneNumber(phoneNumber);
     if (isExistPhoneNumber) {
       console.log("[RaffleInputPage] PHONE NUMBER EXIST");
       setCookie(cookieNames.phoneNumber, phoneNumber);
       setCookie(cookieNames.ticketNumber, isExistPhoneNumber.num);
       navigate(navigationPath.RAFFLE_CONFIRM_PAGE);
     } else {
-      const count = await getCount()
+      const count = await APIRaffle.getCount()
         .then((res) => {
           setEventNumber(res);
-          setCount(res + 1);
+          APIRaffle.setCount(res + 1);
           return res + 1;
         })
         .catch((err) => {
           console.warn(err);
         });
-      postPhoneNumber(phoneNumber, count)
+      APIRaffle.postPhoneNumber(phoneNumber, count)
         .then(() => {
           console.log("[RaffleInputPage] PHONE NUMBER CREATED");
           setCookie(cookieNames.phoneNumber, phoneNumber);
@@ -84,13 +80,10 @@ const RaffleInputPage = () => {
    * FOR INITIALIZE
    */
   useEffect(() => {
-    const init = async () => {
       setIsLoading(true);
-      const num = await getCount();
-      setEventNumber(num);
+      APIRaffle.getCount()
+      .then(res => setEventNumber(res));
       setIsLoading(false);
-    };
-    init();
   }, []);
 
   return (
@@ -123,13 +116,11 @@ const RaffleInputPage = () => {
                     전화번호가 유효하지 않습니다.
                   </p>
                 ) : null}
-                <button
+                <CustomButton
                   type="submit"
                   onClick={onClickSubmit}
-                  className="flex w-full mt-5 justify-center rounded-md bg-BLUE_3 px-3 py-1.5 text-base leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-BLUE_3"
-                >
-                  확인
-                </button>
+                  title="확인"
+                />
               </div>
             </div>
           </div>

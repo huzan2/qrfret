@@ -1,6 +1,8 @@
-import { getSetList } from "APIs/APISetList";
+import APISetList from 'APIs/APISetList';
+import FloatingButtonGoToGuestBook from "Components/FloatingButtonGoToGuestBook";
 import SetListItem from "Components/SetListitem";
 import { useEffect, useState } from "react";
+import { navigationPath } from "util/navigationPath";
 
 const SetListPage = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -18,7 +20,7 @@ const SetListPage = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    getSetList().then((res) => {
+    APISetList.getSetList().then((res) => {
       console.log(res);
       if (res.setList)
         setSetList(res.setList.sort((a, b) => a.number - b.number));
@@ -27,6 +29,7 @@ const SetListPage = () => {
   }, []);
   return (
     <div>
+      <FloatingButtonGoToGuestBook page={navigationPath.SET_LIST_PAGE}/>
       {isLoading ? null : (
         <div>
           <ul className="divide-y divide-gray-600 px-6">

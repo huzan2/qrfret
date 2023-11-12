@@ -16,59 +16,65 @@ number
     ㄴ uuid: "01012341234"
 */
 
-export const DEV_ResetRaffle = async () => {
-  await set(ref(db, "count"), {
-    num: 0,
-  });
-  await set(ref(db, "number"), {});
-};
+const APIRaffle = {
+  DEV_ResetRaffle: async () => {
+    await set(ref(db, "count"), {
+      num: 0,
+    });
+    await set(ref(db, "number"), {});
+  },
+  
+  getCount: async () => {
+    const res = await get(child(dbref, "count"));
+    try {
+      return res.val().num;
+    } catch (err) {
+      throw err;
+    }
+  },
+  
+  setCount: async (value) => {
+    const res = await update(ref(db, "count"), {
+      num: value,
+    });
+    return res
+  },
+  
+  postPhoneNumber: async (phoneNumber, count) => {
+    if (phoneNumber === undefined) return;
+    console.log("POSTPHONENUMBER", phoneNumber, count);
+    const uuid = phoneNumber;
+    const num = count;
+    set(ref(db, "/number/" + uuid), {
+      phoneNumber,
+      num,
+      uuid,
+    });
+  },
+  
+  getIsExistPhoneNumber: async (phoneNumber) => {
+    if (phoneNumber === undefined) return 0;
+    const res = await get(child(dbref, "/number"));
+    if (
+      res &&
+      res.val() !== null &&
+      res.val()[phoneNumber] &&
+      res.val()[phoneNumber] !== undefined
+    ) {
+      return res.val()[phoneNumber];
+    }
+    return 0;
+  },
+  
+  getNumberList: async () => {
+    const res = await get(child(dbref, "number"));
+    try {
+      return res.val();
+    } catch (err) {
+      throw err;
+    }
+  },
+  
+}
 
-export const getCount = async () => {
-  const res = await get(child(dbref, "count"));
-  try {
-    return res.val().num;
-  } catch (err) {
-    throw err;
-  }
-};
-
-export const setCount = async (value) => {
-  const res = await update(ref(db, "count"), {
-    num: value,
-  });
-};
-
-export const postPhoneNumber = async (phoneNumber, count) => {
-  if (phoneNumber === undefined) return;
-  console.log("POSTPHONENUMBER", phoneNumber, count);
-  const uuid = phoneNumber;
-  const num = count;
-  set(ref(db, "/number/" + uuid), {
-    phoneNumber,
-    num,
-    uuid,
-  });
-};
-
-export const getIsExistPhoneNumber = async (phoneNumber) => {
-  if (phoneNumber === undefined) return 0;
-  const res = await get(child(dbref, "/number"));
-  if (
-    res &&
-    res.val() !== null &&
-    res.val()[phoneNumber] &&
-    res.val()[phoneNumber] !== undefined
-  ) {
-    return res.val()[phoneNumber];
-  }
-  return 0;
-};
-
-export const getNumberList = async () => {
-  const res = await get(child(dbref, "number"));
-  try {
-    return res.val();
-  } catch (err) {
-    throw err;
-  }
-};
+export default APIRaffle;

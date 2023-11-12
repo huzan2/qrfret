@@ -1,4 +1,3 @@
-import { DEV_ResetRaffle, getNumberList } from "APIs/APIRaffle";
 import CustomButton from "Components/CustomButton";
 import Logo from "Components/Logo";
 import PageTitle from "Components/PageTitle";
@@ -6,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { cookieNames, deleteCookie } from "util/cookieUtil";
 import { navigationPath } from "util/navigationPath";
+import APIRaffle from './../APIs/APIRaffle';
 
 const RaffleDBPage = () => {
   const navigate = useNavigate();
@@ -33,7 +33,7 @@ const RaffleDBPage = () => {
    */
   useEffect(() => {
     setIsLoading(true);
-    getNumberList().then((res) => {
+    APIRaffle.getNumberList().then((res) => {
       if (res) {
         const rs = Object.entries(res)
           .map(([key, value]) => ({ key, value }))
@@ -63,17 +63,19 @@ const RaffleDBPage = () => {
    * FOR DEV: 추첨권 DB 초기화
    */
   const onClickResetRaffle = () => {
-    if (searchNum !== process.env.REACT_APP_DB_INIT_PASSWORD) {
-      window.alert("비밀번호가 틀렸습니다.");
-      return;
-    }
-    const confirmReset = window.confirm("DB를 초기화하시겠습니까?");
-    if (confirmReset) {
-      DEV_ResetRaffle();
-      deleteCookie(cookieNames.phoneNumber);
-      deleteCookie(cookieNames.ticketNumber);
-      window.alert("DB를 초기화했습니다.");
-      navigate(navigationPath.DEV_PAGE);
+    const inputPW = prompt('비밀번호를 입력하세요.')
+    if(inputPW === process.env.REACT_APP_DB_INIT_PASSWORD){
+      APIRaffle.DEV_ResetRaffle()
+      .then((res) => {
+        deleteCookie(cookieNames.phoneNumber);
+        deleteCookie(cookieNames.ticketNumber);
+        window.alert("DB를 초기화했습니다.");
+        navigate(navigationPath.DEV_PAGE);
+      })
+      .catch((err) => {
+        console.err(err);
+        window.alert("DB 초기화에 실패했습니다.");
+      })
     }
   };
 
@@ -93,7 +95,7 @@ const RaffleDBPage = () => {
   }, [searchNum])
 
   return (
-    <div>
+    <div className="mx-6">
       <div className="flex min-h-full items-center flex-1 flex-col justify-center">
         <Logo />
         <PageTitle title={"추첨번호 DB 열람"} />

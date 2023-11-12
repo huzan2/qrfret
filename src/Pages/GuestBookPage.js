@@ -1,12 +1,19 @@
-import { getGuestBook } from "APIs/APIGuestBook";
+import APIGuestBook from "APIs/APIGuestBook";
+import CustomButton from "Components/CustomButton";
+import GuestBookItem from "Components/GuestBookItem";
+import Logo from "Components/Logo";
+import PageTitle from "Components/PageTitle";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const GuestBookPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [guestBookList, setGuestBookList] = useState([]);
   const [guestBookCount, setGuestBookCount] = useState(0);
   const navigate = useNavigate();
+  const { state } = useLocation();
+  const [inputNickname, setInputNickname] = useState('')
+  const [inputComment, setInputComment] = useState('')
 
   //>>>>>>>>>>>>>>>>>>>>>>>>>>>>FOR DEBUG>>>>>>>>>>>>>>>
   const TEST = async () => { };
@@ -23,39 +30,99 @@ const GuestBookPage = () => {
   /**
    * FOR INITIALIZE
    */
-  useEffect(() => {
+
+  const refresh = async () => {
     setIsLoading(true);
-    getGuestBook().then(
+    setInputComment('');
+    setInputNickname('');
+    APIGuestBook.getGuestBook().then(
       (res) => {
+        if (res.guestBook === undefined) return;
+        const guestBookList = Object.values(res.guestBook).sort((a, b) => {
+          const dateA = new Date(a.created_at);
+          const dateB = new Date(b.created_at);
+          return dateB.getTime() - dateA.getTime();
+        })
         setGuestBookCount(res.count)
-        setGuestBookList(res.guestBook)
+        setGuestBookList(guestBookList)
       })
     setIsLoading(false);
+  }
+
+  useEffect(() => {
+    refresh();
   }, []);
 
   /**
-   * 다음 두 방법 중 하나로 pagenation할 생각.
-   * 1. Pagenation Bar로 인덱싱
-   * 2. 세로로 무한스크롤 pagenation
-   * 위 두 방법 중 어떤 방법으로 하더라도 API에 pageNo, pageSize 같이 넣어줘서 받아오는 메소드 작성해야 함
+   * events
    */
+  const onClickBackButton = () => {
+    console.log(state)
+    if (state !== undefined) navigate(state)
+  }
+
+  const onChangeInput = (event, setState) => {
+    setState(event.target.value);
+  }
+
+  const inputHandler = (event) => {
+
+  }
+
+  const onClickSubmit = async () => {
+    if (inputComment === '' || inputNickname === '') return;
+    APIGuestBook.postGuestBook(inputNickname, inputComment)
+      .then((res) => {
+        refresh();
+      })
+  }
 
   return (
-    <>
+    <div className="mx-3">
+      <Logo />
+      <PageTitle title="방명록" />
       {
         isLoading ?
           null :
           <div>
-            {guestBookList.map((e, index) => {
-              return (
-                <div key={`guest-${index}`}>
-                  {index + 1}. {e.nickname}: {e.comment}
-                </div>
-              )
-            })}
+            <input
+              type="text"
+              maxLength={10}
+              placeholder="nickname"
+              onChange={(event) => onChangeInput(event, setInputNickname)}
+              onInput={inputHandler}
+              className="block w-full rounded-md border-0 py-1.5 mt-7 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-base sm:leading-6"
+              value={inputNickname}
+            />
+            <textarea
+              type="text"
+              maxLength={100}
+              placeholder="comment"
+              onChange={(event) => onChangeInput(event, setInputComment)}
+              onInput={inputHandler}
+              className="block w-full rounded-md border-0 py-1.5 mt-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-base sm:leading-6"
+              value={inputComment}
+            />
+            <CustomButton
+              type="submit"
+              onClick={onClickSubmit}
+              title="게시"
+            />
+            <ul className="divide-y divide-gray-600 py-6">
+              {guestBookList.map((e, index) => {
+                return <GuestBookItem
+                  key={`guestbook-${index}`}
+                  index={index + 1}
+                  nickname={e.nickname}
+                  comment={e.comment}
+                  date={e.created_at}
+                />
+              })}
+            </ul>
           </div>
       }
-    </>
+      <CustomButton title={"뒤로가기"} onClick={onClickBackButton} />
+    </div>
   )
 }
 

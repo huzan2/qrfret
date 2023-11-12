@@ -1,4 +1,5 @@
-import { getIsExistPhoneNumber } from "APIs/APIRaffle"
+import APIRaffle from 'APIs/APIRaffle'
+import FloatingButtonGoToGuestBook from "Components/FloatingButtonGoToGuestBook"
 import Logo from "Components/Logo"
 import PageTitle from "Components/PageTitle"
 import { useEffect, useState } from "react"
@@ -24,7 +25,7 @@ const RaffleConfirmPage = () => {
     const init = async () => {
       setIsLoading(true)
       const cookiePhoneNumber = getCookie(cookieNames.phoneNumber);
-      const isExistPhoneNumber = await getIsExistPhoneNumber(cookiePhoneNumber);
+      const isExistPhoneNumber = await APIRaffle.getIsExistPhoneNumber(cookiePhoneNumber);
       if(isExistPhoneNumber){
         setPhoneNumber(cookiePhoneNumber);
         setTicketNumber(isExistPhoneNumber.num);
@@ -38,6 +39,7 @@ const RaffleConfirmPage = () => {
 
   return (
     <div className="flex flex-col justify-center m-6">
+    <FloatingButtonGoToGuestBook page={navigationPath.RAFFLE_CONFIRM_PAGE}/>
       <Logo/>
       <PageTitle title={"추첨권 조회"} />
       {

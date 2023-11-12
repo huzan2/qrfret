@@ -29,7 +29,6 @@ const SetListItem = ({ item, index }) => {
 
   return (
     <li
-      key={`setlist-${index}`}
       className="flex justify-between gap-x-6 py-5 w-full"
     >
       <div className="flex min-w-0 gap-x-5 w-full">
