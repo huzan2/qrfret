@@ -18,7 +18,7 @@ const Logo = () => {
       <img
         className="mx-auto h-28 w-auto"
         src={logofret}
-        alt="Your Company"
+        alt="logo"
         onClick={onClickLogo}
       />
     </div>

@@ -1,6 +1,5 @@
 import CustomButton from "Components/CustomButton";
 import Logo from "Components/Logo";
-import PageTitle from "Components/PageTitle";
 import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { cookieNames, getCookie } from "util/cookieUtil";
@@ -65,8 +64,6 @@ const HomePage = () => {
         {isLoading ? null : (
           <div>
             <Logo/>
-            <PageTitle title={"2023 14fret 정기공연"} />
-            <PageTitle title={"Fly with 14FRET"} />
             <CustomButton
               title={"셋리스트 조회"}
               onClick={onClickSetListButton}

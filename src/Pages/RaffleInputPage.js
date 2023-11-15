@@ -3,7 +3,7 @@ import CustomButton from "Components/CustomButton";
 import PageTitle from "Components/PageTitle";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { cookieNames, setCookie } from "util/cookieUtil";
+import { cookieNames, getCookie, setCookie } from "util/cookieUtil";
 import { navigationPath } from "util/navigationPath";
 
 const RaffleInputPage = () => {
@@ -85,6 +85,13 @@ const RaffleInputPage = () => {
       .then(res => setEventNumber(res));
       setIsLoading(false);
   }, []);
+
+  useEffect(() => {
+    const ticketNumber = getCookie(cookieNames.ticketNumber);
+    if(ticketNumber !== undefined){
+      navigate(navigationPath.RAFFLE_CONFIRM_PAGE)
+    }
+  }, [])
 
   return (
     <div>

@@ -86,29 +86,6 @@ const GuestBookPage = () => {
         isLoading ?
           null :
           <div>
-            <input
-              type="text"
-              maxLength={10}
-              placeholder="nickname"
-              onChange={(event) => onChangeInput(event, setInputNickname)}
-              onInput={inputHandler}
-              className="block w-full rounded-md border-0 py-1.5 mt-7 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-base sm:leading-6"
-              value={inputNickname}
-            />
-            <textarea
-              type="text"
-              maxLength={100}
-              placeholder="comment"
-              onChange={(event) => onChangeInput(event, setInputComment)}
-              onInput={inputHandler}
-              className="block w-full rounded-md border-0 py-1.5 mt-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-base sm:leading-6"
-              value={inputComment}
-            />
-            <CustomButton
-              type="submit"
-              onClick={onClickSubmit}
-              title="게시"
-            />
             <ul className="divide-y divide-gray-600 py-6">
               {guestBookList.map((e, index) => {
                 return <GuestBookItem
@@ -122,6 +99,29 @@ const GuestBookPage = () => {
             </ul>
           </div>
       }
+      <input
+        type="text"
+        maxLength={10}
+        placeholder="nickname"
+        onChange={(event) => onChangeInput(event, setInputNickname)}
+        onInput={inputHandler}
+        className="block w-full rounded-md border-0 py-1.5 mt-7 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-base sm:leading-6"
+        value={inputNickname}
+      />
+      <textarea
+        type="text"
+        maxLength={100}
+        placeholder="comment"
+        onChange={(event) => onChangeInput(event, setInputComment)}
+        onInput={inputHandler}
+        className="block w-full rounded-md border-0 py-1.5 mt-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-base sm:leading-6"
+        value={inputComment}
+      />
+      <CustomButton
+        type="submit"
+        onClick={onClickSubmit}
+        title="게시"
+      />
       <CustomButton title={"뒤로가기"} onClick={onClickBackButton} />
     </div>
   )

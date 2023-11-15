@@ -1,5 +1,6 @@
 import FloatingButtonGoToGuestBook from "Components/FloatingButtonGoToGuestBook";
 import SetListItem from "Components/SetListitem";
+import IconLine from 'images/icon-line.png';
 import { useEffect, useState } from "react";
 import { setList } from 'setList';
 import { navigationPath } from "util/navigationPath";
@@ -27,16 +28,21 @@ const SetListPage = () => {
       <FloatingButtonGoToGuestBook page={navigationPath.SET_LIST_PAGE}/>
       {isLoading ? null : (
         <div>
-          <ul className="divide-y divide-gray-600 px-6">
+          <ul className="px-6">
             {setList["setList"].map((item, index) => {
-                  return (
-                    <SetListItem
-                      key={`item-${index}`}
-                      item={item}
-                      index={index}
-                    />
-                  );
-                })}
+              if(index === 0){
+                return (
+                  <SetListItem key={`item-${index}`} item={item} index={index} />
+                );
+              }else{
+                return (
+                  <div>
+                  <img className="mx-auto w-auto" src={IconLine} alt="icon-line" />
+                    <SetListItem key={`item-${index}`} item={item} index={index} />
+                  </div>
+                )
+              }
+            })}
           </ul>
         </div>
       )}

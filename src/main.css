@@ -8,8 +8,13 @@
 }
 
 @font-face {
-  font-family: 'NanumSquareEB';
+  font-family: 'Tenada';
   src: url('/src/fonts/Tenada.ttf');
+}
+
+@font-face {
+  font-family: 'ddag';
+  src: url('/src/fonts/ddag.ttf')
 }
 
 @layer base {

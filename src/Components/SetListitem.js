@@ -21,7 +21,7 @@ const Session = ({ session, member }) => {
 const SetListItem = ({ item, index }) => {
   return (
     <li
-      className="flex justify-between gap-x-6 py-5 w-full"
+      className="flex justify-between gap-x-6 py-2 w-full"
     >
       <div className="flex min-w-0 gap-x-5 w-full">
         <div className="min-w-0 w-full flex-col gap-3">
