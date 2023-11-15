@@ -1,7 +1,9 @@
-import IconGithub from 'images/icon-github.svg';
 import IconInstagram from 'images/icon-instagram.svg';
 import IconKakaotalk from 'images/icon-kakaotalk.svg';
 import IconYoutube from 'images/icon-youtube.svg';
+import { BsPeopleFill } from "react-icons/bs";
+import { useSetRecoilState } from 'recoil';
+import { atomIsOpenModal } from 'util/atom';
 
 const Footer = () => {
   const INSTAGRAM_LINK = 'https://www.instagram.com/14fre_t/'
@@ -21,8 +23,10 @@ const Footer = () => {
     window.open(YOUTUBE_LINK)
   }
 
-  const onClickGithub = () => {
-    window.open(GITHUB_LINK)
+  const setIsModalOpen = useSetRecoilState(atomIsOpenModal)
+
+  const onClickExpend = () => {
+    setIsModalOpen(true);
   }
 
   return (
@@ -30,7 +34,7 @@ const Footer = () => {
       <img onClick={onClickInsta} src={IconInstagram} alt="instagram" className="h-auto w-8"/>
       <img onClick={onClickYoutube} src={IconYoutube} alt="youtube" className="h-auto w-8"/>
       <img onClick={onClickKakao} src={IconKakaotalk} alt="kakaotalk" className="h-auto w-8"/>
-      <img onClick={onClickGithub} src={IconGithub} alt="github" className="h-auto w-8"/>
+      <BsPeopleFill onClick={onClickExpend} color="white" size={30}/>
     </div>
   )
 }

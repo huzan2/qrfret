@@ -21,11 +21,11 @@ const Session = ({ session, member }) => {
 const SetListItem = ({ item, index }) => {
   return (
     <li
-      className="flex justify-between gap-x-6 py-2 w-full"
+      className="flex justify-between gap-x-6 py-6 w-full"
     >
       <div className="flex min-w-0 gap-x-5 w-full">
         <div className="min-w-0 w-full flex-col gap-3">
-          <p className="font-bold flex items-center text-lg justify-center">
+          <p className="font-bold flex items-center text-lg justify-center text-BLUE_5">
             {item.number}
           </p>
           <span
@@ -81,7 +81,7 @@ const Lyric = ({ lyric }) => {
   }
 
   return (
-    <div className="text-center text-sm mt-2 whitespace-pre-line">
+    <div className="text-center text-sm mt-2 whitespace-pre-line text-BLUE_5">
       {isOpen ?
         <div style={{height: `${LYRIC_HEIGHT + 1.25}rem`}} className={`transition-all duration-200`}>
           {lyricFormatter(lyric)}

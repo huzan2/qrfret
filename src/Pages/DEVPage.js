@@ -42,9 +42,9 @@ const DEVPage = () => {
   }
   
   return (
-    <div className="flex flex-col justify-center m-6">
+    <div>
       <Header />
-      <div className="flex flex-col justify-center m-6 mt-[164px] mb-[48px]">
+      <div className="flex flex-col justify-center m-6  mb-[48px]">
         <Logo />
         <PageTitle title={"=======DEV======="} />
         <div className="mt-5" />

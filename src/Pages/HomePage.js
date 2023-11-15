@@ -1,4 +1,5 @@
 import CustomButton from "Components/CustomButton";
+import Footer from "Components/Footer";
 import Header from "Components/Header";
 import Logo from "Components/Logo";
 import { useEffect, useState } from "react";
@@ -62,7 +63,7 @@ const HomePage = () => {
   return (
     <>
     <Header/>
-      <div className="flex flex-col justify-center m-6 mt-[164px] mb-[48px]">
+      <div className="flex flex-col justify-center m-6  mb-[48px]">
         {isLoading ? null : (
           <div>
             <Logo/>
@@ -77,6 +78,7 @@ const HomePage = () => {
           </div>
         )}
       </div>
+    <Footer/>
     </>
   );
 };

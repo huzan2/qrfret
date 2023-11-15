@@ -1,7 +1,6 @@
 import CustomButton from "Components/CustomButton";
 import Footer from "Components/Footer";
 import Header from "Components/Header";
-import Logo from "Components/Logo";
 import PageTitle from "Components/PageTitle";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -48,7 +47,7 @@ const RaffleDBPage = () => {
   }, []);
 
   const onClickBackButton = () => {
-    navigate(navigationPath.HOME_PAGE);
+    navigate(navigationPath.DEV_PAGE);
   };
 
   const onChangeInputNumber = (e) => {
@@ -97,10 +96,9 @@ const RaffleDBPage = () => {
   }, [searchNum])
 
   return (
-    <div className="mx-6">
+    <div>
       <Header />
-      <div className="flex min-h-full items-center flex-1 flex-col mt-[164px] mb-[48px]">
-        <Logo />
+      <div className="mx-6 flex min-h-full items-center flex-1 flex-col  mb-[48px]">
         <PageTitle title={"추첨번호 DB 열람"} />
         {isloading ? null : (
           <div className="mt-2 w-full sm:mx-auto sm:max-w-sm">
