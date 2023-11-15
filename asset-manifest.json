@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/qrfret/static/css/main.28c4e1b0.css",
-    "main.js": "/qrfret/static/js/main.e76713cf.js",
+    "main.css": "/qrfret/static/css/main.0550b2ec.css",
+    "main.js": "/qrfret/static/js/main.475f008a.js",
     "static/media/sangju_gyeongcheon_island.ttf": "/qrfret/static/media/sangju_gyeongcheon_island.ffaf90b2b2e450f658e4.ttf",
     "static/media/icon-window-02.png": "/qrfret/static/media/icon-window-02.5fdf5fd564a3f5124033.png",
     "static/media/Tenada.ttf": "/qrfret/static/media/Tenada.0cfe8963fde304575974.ttf",
@@ -13,11 +13,11 @@
     "static/media/icon-kakaotalk.svg": "/qrfret/static/media/icon-kakaotalk.7b7907fd5abf55f0f4ccdbf58cc8a1ac.svg",
     "index.html": "/qrfret/index.html",
     "static/media/icon-youtube.svg": "/qrfret/static/media/icon-youtube.6806408aa1bf55b7f1aaba51978e649e.svg",
-    "main.28c4e1b0.css.map": "/qrfret/static/css/main.28c4e1b0.css.map",
-    "main.e76713cf.js.map": "/qrfret/static/js/main.e76713cf.js.map"
+    "main.0550b2ec.css.map": "/qrfret/static/css/main.0550b2ec.css.map",
+    "main.475f008a.js.map": "/qrfret/static/js/main.475f008a.js.map"
   },
   "entrypoints": [
-    "static/css/main.28c4e1b0.css",
-    "static/js/main.e76713cf.js"
+    "static/css/main.0550b2ec.css",
+    "static/js/main.475f008a.js"
   ]
 }
