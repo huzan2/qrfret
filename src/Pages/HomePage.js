@@ -1,4 +1,5 @@
 import CustomButton from "Components/CustomButton";
+import Header from "Components/Header";
 import Logo from "Components/Logo";
 import { useEffect, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
@@ -60,7 +61,8 @@ const HomePage = () => {
 
   return (
     <>
-      <div className="flex flex-col justify-center m-6">
+    <Header/>
+      <div className="flex flex-col justify-center m-6 mt-[164px] mb-[48px]">
         {isLoading ? null : (
           <div>
             <Logo/>

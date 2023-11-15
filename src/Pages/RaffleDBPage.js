@@ -1,4 +1,6 @@
 import CustomButton from "Components/CustomButton";
+import Footer from "Components/Footer";
+import Header from "Components/Header";
 import Logo from "Components/Logo";
 import PageTitle from "Components/PageTitle";
 import { useEffect, useState } from "react";
@@ -96,7 +98,8 @@ const RaffleDBPage = () => {
 
   return (
     <div className="mx-6">
-      <div className="flex min-h-full items-center flex-1 flex-col justify-center">
+      <Header />
+      <div className="flex min-h-full items-center flex-1 flex-col mt-[164px] mb-[48px]">
         <Logo />
         <PageTitle title={"추첨번호 DB 열람"} />
         {isloading ? null : (
@@ -143,6 +146,7 @@ const RaffleDBPage = () => {
           </div>
         )}
       </div>
+      <Footer />
     </div>
   );
 };

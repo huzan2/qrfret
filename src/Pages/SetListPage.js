@@ -1,4 +1,6 @@
 import FloatingButtonGoToGuestBook from "Components/FloatingButtonGoToGuestBook";
+import Footer from "Components/Footer";
+import Header from "Components/Header";
 import SetListItem from "Components/SetListitem";
 import IconLine from 'images/icon-line.png';
 import { useEffect, useState } from "react";
@@ -25,6 +27,8 @@ const SetListPage = () => {
 
   return (
     <div>
+      <Header/>
+      <div className=" mt-[164px] mb-[48px]">
       <FloatingButtonGoToGuestBook page={navigationPath.SET_LIST_PAGE}/>
       {isLoading ? null : (
         <div>
@@ -37,15 +41,25 @@ const SetListPage = () => {
               }else{
                 return (
                   <div>
-                  <img className="mx-auto w-auto" src={IconLine} alt="icon-line" />
-                    <SetListItem key={`item-${index}`} item={item} index={index} />
+                    <img
+                      className="mx-auto w-auto"
+                      src={IconLine}
+                      alt="icon-line"
+                    />
+                    <SetListItem
+                      key={`item-${index}`}
+                      item={item}
+                      index={index}
+                    />
                   </div>
-                )
+                );
               }
             })}
           </ul>
         </div>
       )}
+      </div>
+      <Footer />
     </div>
   );
 };

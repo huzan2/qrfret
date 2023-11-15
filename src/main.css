@@ -17,6 +17,11 @@
   src: url('/src/fonts/ddag.ttf')
 }
 
+@font-face {
+  font-family: 'sangju';
+  src: url('/src/fonts/sangju_gyeongcheon_island.ttf')
+}
+
 @layer base {
   input[type="number"]::-webkit-inner-spin-button,
   input[type="number"]::-webkit-outer-spin-button {

@@ -1,5 +1,7 @@
 import APIRaffle from 'APIs/APIRaffle';
 import CustomButton from "Components/CustomButton";
+import Footer from 'Components/Footer';
+import Header from 'Components/Header';
 import PageTitle from "Components/PageTitle";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -95,7 +97,8 @@ const RaffleInputPage = () => {
 
   return (
     <div>
-      <div className="flex flex-col justify-center m-6">
+      <Header />
+      <div className="flex flex-col justify-center m-6 mt-[164px] mb-[48px]">
         {isLoading ? null : (
           <div>
             <PageTitle title="추첨권 등록" />
@@ -133,6 +136,7 @@ const RaffleInputPage = () => {
           </div>
         )}
       </div>
+      <Footer />
     </div>
   );
 };

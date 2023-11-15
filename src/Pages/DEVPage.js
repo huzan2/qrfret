@@ -1,5 +1,7 @@
 import APIGuestBook from "APIs/APIGuestBook";
 import CustomButton from "Components/CustomButton";
+import Footer from "Components/Footer";
+import Header from "Components/Header";
 import Logo from "Components/Logo";
 import PageTitle from "Components/PageTitle";
 import { useNavigate } from "react-router-dom";
@@ -41,16 +43,23 @@ const DEVPage = () => {
   
   return (
     <div className="flex flex-col justify-center m-6">
-      <Logo/>
-      <PageTitle title={"=======DEV======="} />
-      <div className="mt-5" />
-      <CustomButton
-        title={"쿠키(추첨권 번호) 초기화"}
-        onClick={onClickResetCookie}
-      />
-      <CustomButton title={"추첨권 DB 열람하기"} onClick={onClickGoToDB} />
-      <CustomButton title={"방명록 DB 초기화"} onClick={onClickguestBookDBReset} />
-      <CustomButton title={"돌아가기"} onClick={onClickBackToMain} />
+      <Header />
+      <div className="flex flex-col justify-center m-6 mt-[164px] mb-[48px]">
+        <Logo />
+        <PageTitle title={"=======DEV======="} />
+        <div className="mt-5" />
+        <CustomButton
+          title={"쿠키(추첨권 번호) 초기화"}
+          onClick={onClickResetCookie}
+        />
+        <CustomButton title={"추첨권 DB 열람하기"} onClick={onClickGoToDB} />
+        <CustomButton
+          title={"방명록 DB 초기화"}
+          onClick={onClickguestBookDBReset}
+        />
+        <CustomButton title={"돌아가기"} onClick={onClickBackToMain} />
+      </div>
+      <Footer />
     </div>
   );
 };
