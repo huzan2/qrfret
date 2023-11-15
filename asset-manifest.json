@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/qrfret/static/css/main.a423b893.css",
-    "main.js": "/qrfret/static/js/main.9d8aaf30.js",
+    "main.css": "/qrfret/static/css/main.b7bcfe29.css",
+    "main.js": "/qrfret/static/js/main.08dbfc0f.js",
     "static/media/sangju_gyeongcheon_island.ttf": "/qrfret/static/media/sangju_gyeongcheon_island.ffaf90b2b2e450f658e4.ttf",
     "static/media/icon-window-02.png": "/qrfret/static/media/icon-window-02.5fdf5fd564a3f5124033.png",
     "static/media/Tenada.ttf": "/qrfret/static/media/Tenada.0cfe8963fde304575974.ttf",
@@ -16,14 +16,16 @@
     "static/media/icon-notice.svg": "/qrfret/static/media/icon-notice.9693bf19b67589ada012165e1cdcd854.svg",
     "static/media/icon-arrow-right-gray.svg": "/qrfret/static/media/icon-arrow-right-gray.b66c09052ebcf2872228e74b7b17153e.svg",
     "index.html": "/qrfret/index.html",
+    "static/media/icon-line.svg": "/qrfret/static/media/icon-line.1376905a6aab8ff454c00625987b1cce.svg",
     "static/media/icon-arrow-up-gray.svg": "/qrfret/static/media/icon-arrow-up-gray.fcb30d81ffe682d1c9dcc5a66d46e8bc.svg",
+    "static/media/icon-arrow-down-gray.svg": "/qrfret/static/media/icon-arrow-down-gray.afb54d46df02d3ed1f13a28fb30ef73d.svg",
     "static/media/icon-arrow-left-white.svg": "/qrfret/static/media/icon-arrow-left-white.0476f9441b6cb2e11bfacc86b2a77ce5.svg",
     "static/media/icon-youtube.svg": "/qrfret/static/media/icon-youtube.6806408aa1bf55b7f1aaba51978e649e.svg",
-    "main.a423b893.css.map": "/qrfret/static/css/main.a423b893.css.map",
-    "main.9d8aaf30.js.map": "/qrfret/static/js/main.9d8aaf30.js.map"
+    "main.b7bcfe29.css.map": "/qrfret/static/css/main.b7bcfe29.css.map",
+    "main.08dbfc0f.js.map": "/qrfret/static/js/main.08dbfc0f.js.map"
   },
   "entrypoints": [
-    "static/css/main.a423b893.css",
-    "static/js/main.9d8aaf30.js"
+    "static/css/main.b7bcfe29.css",
+    "static/js/main.08dbfc0f.js"
   ]
 }
