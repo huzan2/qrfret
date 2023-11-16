@@ -6,16 +6,19 @@ import Logo from "./Logo";
 const CustomModal = () => {
   const setIsOpenModal = useSetRecoilState(atomIsOpenModal);
   const onClickInvisible = () => {
-    setIsOpenModal(false)
-  }
+    setIsOpenModal(false);
+  };
 
   useEffect(() => {
     document.body.style = `overflow: hidden`;
-    return () => document.body.style = `overflow: auto`
-  }, [])
+    return () => (document.body.style = `overflow: auto`);
+  }, []);
 
   return (
-    <div className="fixed left-0 top-0 w-screen h-screen bg-[rgba(0,0,0,0.5)] flex justify-center items-center z-10 whitespace-pre-line" onClick={onClickInvisible}>
+    <div
+      className="fixed left-0 top-0 w-screen h-screen bg-[rgba(0,0,0,0.5)] flex justify-center items-center z-10 whitespace-pre-line"
+      onClick={onClickInvisible}
+    >
       <div className="mx-6 w-full bg-white rounded-lg p-4 flex flex-col align-center justify-center gap-3 break-keep h-[50%] overflow-scroll pt-[34rem]">
         <div className="w-full text-center font-bold text-xl">
           <Logo />
@@ -65,9 +68,7 @@ const CustomModal = () => {
             </div>
           </div>
           <div />
-          <div className="w-[12rem]">
-          {"김준서 류미진 이서은 한지우"}
-          </div>
+          <div className="w-[12rem]">{"김준서 류미진 이서은 한지우"}</div>
           <div>{"\n"}</div>
           <div className="w-full flex justify-center">
             <div className="w-[10rem] flex justify-between">
@@ -110,7 +111,9 @@ const CustomModal = () => {
           </div>
           <div />
           <div className="w-[12rem]">
-            {"김다솔 김민정 김민지 김선우 김준서 박건도 안병규 이주원 최승혜 최현석"}
+            {
+              "김다솔 김민정 김민지 김선우 김준서 박건도 안병규 이주원 최승혜 최현석"
+            }
           </div>
         </div>
         <div className="w-full flex flex-col items-center text-center text-sm">
@@ -136,7 +139,7 @@ const CustomModal = () => {
           </div>
           <div />
           <div className="w-[12rem]">
-            {"이서영 이승하 임은수 한지우"}
+            {"이서영 이승하 임은수 장우종 한지우"}
           </div>
         </div>
         <div className="w-full flex flex-col items-center text-center text-sm">
@@ -161,13 +164,11 @@ const CustomModal = () => {
             </div>
           </div>
           <div />
-          <div className="w-[12rem]">
-            {"김석진 김영균 이유준 한지우"}
-          </div>
+          <div className="w-[12rem]">{"김석진 김영균 이유준 한지우"}</div>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default CustomModal;
