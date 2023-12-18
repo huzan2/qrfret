@@ -21,22 +21,23 @@ const RaffleConfirmPage = () => {
       console.log("[RaffleConfirmPage] LOADING COMPLETE!");
     }
   }, [isLoading]);
+  
+  const init = async () => {
+    setIsLoading(true);
+    const cookiePhoneNumber = getCookie(cookieNames.phoneNumber);
+    const isExistPhoneNumber = await APIRaffle.getIsExistPhoneNumber(
+      cookiePhoneNumber
+    );
+    if (isExistPhoneNumber) {
+      setPhoneNumber(cookiePhoneNumber);
+      setTicketNumber(isExistPhoneNumber.num);
+    } else {
+      navigate(navigationPath.RAFFLE_INPUT_PAGE);
+    }
+    setIsLoading(false);
+  };
 
   useEffect(() => {
-    const init = async () => {
-      setIsLoading(true);
-      const cookiePhoneNumber = getCookie(cookieNames.phoneNumber);
-      const isExistPhoneNumber = await APIRaffle.getIsExistPhoneNumber(
-        cookiePhoneNumber
-      );
-      if (isExistPhoneNumber) {
-        setPhoneNumber(cookiePhoneNumber);
-        setTicketNumber(isExistPhoneNumber.num);
-      } else {
-        navigate(navigationPath.RAFFLE_INPUT_PAGE);
-      }
-      setIsLoading(false);
-    };
     init();
   }, []);
 

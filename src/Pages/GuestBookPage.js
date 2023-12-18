@@ -32,10 +32,15 @@ const GuestBookPage = () => {
   }, [isLoading]);
   //<<<<<<<<<<<<<<<<<<<<<<<<<<<<FOR DEBUG<<<<<<<<<<<<<<<
 
+  const sortCallbackByCreatedAt = (a,b) => {
+    const dateA = new Date(a.created_at);
+    const dateB = new Date(b.created_at);
+    return dateA.getTime() - dateB.getTime();
+  }
+
   /**
    * FOR INITIALIZE
    */
-
   const refresh = async () => {
     setIsLoading(true);
     setInputComment('');
@@ -43,17 +48,12 @@ const GuestBookPage = () => {
     APIGuestBook.getGuestBook().then(
       (res) => {
         if (res.guestBook === undefined) return;
-        const guestBookList = Object.values(res.guestBook).sort((a, b) => {
-          const dateA = new Date(a.created_at);
-          const dateB = new Date(b.created_at);
-          return dateA.getTime() - dateB.getTime();
-        })
+        const guestBookList = Object.values(res.guestBook).sort(sortCallbackByCreatedAt)
         setGuestBookCount(res.count)
         setGuestBookList(guestBookList)
         setIsLoading(false);
       })
   }
-
   useEffect(() => {
     refresh();
   }, []);
@@ -83,11 +83,7 @@ const GuestBookPage = () => {
         APIGuestBook.getGuestBook().then(
           (res) => {
             if (res.guestBook === undefined) return;
-            const guestBookList = Object.values(res.guestBook).sort((a, b) => {
-              const dateA = new Date(a.created_at);
-              const dateB = new Date(b.created_at);
-              return dateA.getTime() - dateB.getTime();
-            })
+            const guestBookList = Object.values(res.guestBook).sort(sortCallbackByCreatedAt)
             setGuestBookCount(res.count)
             setGuestBookList(guestBookList)
           })
